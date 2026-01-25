@@ -1,0 +1,5 @@
+{
+  "name": "Sky Portfolio Generator",
+  "description": "An intelligent, glassmorphic portfolio with time-based sky gradients, GitHub integration, and i18n support.",
+  "requestFramePermissions": []
+}

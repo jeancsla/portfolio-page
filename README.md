@@ -1,11 +1,35 @@
-<div align="center">
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+# Sky Portfolio
 
-  <h1>Built with AI Studio</h2>
+A modern, intelligent, glassmorphic portfolio website.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Features
+- **Time-based Sky Gradient**: Background changes dynamically based on the user's local hour.
+- **Sun/Moon Icon**: Header element tracks time of day horizontally.
+- **Glassmorphism**: Elegant blur effects and translucent borders.
+- **i18n Support**: Ready for English and Portuguese.
+- **Convention-based Architecture**: Content is separated from logic using a data-driven approach with `data-*` attributes.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Content Management
+Add new projects or experiences in `constants.ts`. The UI will automatically render them as glassmorphic cards.
 
-</div>
+### Adding a Project
+```typescript
+{
+  id: 'unique-id',
+  type: 'project',
+  titleKey: 'Project Title',
+  descriptionKey: 'Description here...',
+  date: 'YYYY-MM-DD',
+  github: 'owner/repo',
+  tags: ['react', 'web']
+}
+```
+
+## Deployment
+1. Build the project.
+2. Push to GitHub.
+3. Enable GitHub Pages on the repository settings pointing to the `docs` or `root` folder.
+
+## AI Governance
+Refer to `agent.md` for rules governing AI contributions and code maintenance.
