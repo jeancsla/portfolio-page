@@ -29,28 +29,40 @@ export const TRANSLATIONS: Translation = {
   "projects.title": { en: "Projects", pt: "Projetos" },
 
   // Project 1: Revenue Data Platform
-  "p1.title": { en: "Revenue Data Platform", pt: "Plataforma de Dados de Receita" },
+  "p1.title": {
+    en: "Revenue Data Platform",
+    pt: "Plataforma de Dados de Receita",
+  },
   "p1.description": {
     en: "Centralized data pipeline processing $2M+ ARR, reducing reporting time by 20 hours/week and improving forecast accuracy by 15%.",
     pt: "Pipeline de dados centralizado processando $2M+ ARR, reduzindo o tempo de relatório em 20 horas/semana e melhorando a precisão de previsão em 15%.",
   },
 
   // Project 2: CRM Data Quality
-  "p2.title": { en: "CRM Data Quality Automation", pt: "Automação de Qualidade de Dados do CRM" },
+  "p2.title": {
+    en: "CRM Data Quality Automation",
+    pt: "Automação de Qualidade de Dados do CRM",
+  },
   "p2.description": {
     en: "Improved HubSpot data accuracy by 10% through automated validation workflows, enabling reliable revenue forecasting and reducing manual data cleanup by 15 hours/week.",
     pt: "Melhorou a precisão dos dados do HubSpot em 10% por meio de fluxos de trabalho de validação automatizados, permitindo previsões de receita confiáveis e reduzindo a limpeza manual de dados em 15 horas/semana.",
   },
 
   // Project 3: WhatsApp Survey MVP
-  "p3.title": { en: "WhatsApp Survey MVP (SoluCX)", pt: "MVP de Pesquisa WhatsApp (SoluCX)" },
+  "p3.title": {
+    en: "WhatsApp Survey MVP (SoluCX)",
+    pt: "MVP de Pesquisa WhatsApp (SoluCX)",
+  },
   "p3.description": {
     en: "Prevented R$200,000+ annual revenue loss by building WhatsApp survey MVP that saved tier 1 customer from churning through data-driven insights.",
     pt: "Evitou perda de R$200.000+ em receita anual construindo MVP de pesquisa WhatsApp que salvou cliente tier 1 de cancelamento por meio de insights orientados a dados.",
   },
 
   // Project 4: WhatsApp Job Bot
-  "p4.title": { en: "WhatsApp Job Notification Bot", pt: "Bot de Notificação de Emprego WhatsApp" },
+  "p4.title": {
+    en: "WhatsApp Job Notification Bot",
+    pt: "Bot de Notificação de Emprego WhatsApp",
+  },
   "p4.description": {
     en: "Automated job notification system reducing recruitment response time by 75% and increasing candidate engagement by 73% through WhatsApp integration.",
     pt: "Sistema automatizado de notificação de emprego reduzindo tempo de resposta de recrutamento em 75% e aumentando envolvimento de candidatos em 73% através da integração WhatsApp.",
@@ -64,7 +76,10 @@ export const TRANSLATIONS: Translation = {
   },
 
   // Project 6: Portfolio
-  "p6.title": { en: "Interactive Portfolio Website", pt: "Site de Portfólio Interativo" },
+  "p6.title": {
+    en: "Interactive Portfolio Website",
+    pt: "Site de Portfólio Interativo",
+  },
   "p6.description": {
     en: "Modern portfolio built with React 19, TypeScript, and custom time-based gradient system showcasing technical and design skills with 98/100 Lighthouse score.",
     pt: "Portfólio moderno construído com React 19, TypeScript e sistema de gradiente baseado em tempo personalizado, mostrando habilidades técnicas e de design com pontuação Lighthouse de 98/100.",
@@ -78,16 +93,31 @@ export const TRANSLATIONS: Translation = {
 
   // Skill Categories
   "skill.revops.title": { en: "Revenue Operations", pt: "Revenue Operations" },
-  "skill.revops.description": { en: "CRM management, forecasting, and revenue analytics", pt: "Gerenciamento de CRM, previsão e análise de receita" },
+  "skill.revops.description": {
+    en: "CRM management, forecasting, and revenue analytics",
+    pt: "Gerenciamento de CRM, previsão e análise de receita",
+  },
 
-  "skill.automation.title": { en: "Automation & Integration", pt: "Automação e Integração" },
-  "skill.automation.description": { en: "Workflow automation and system integration", pt: "Automação de fluxo de trabalho e integração de sistemas" },
+  "skill.automation.title": {
+    en: "Automation & Integration",
+    pt: "Automação e Integração",
+  },
+  "skill.automation.description": {
+    en: "Workflow automation and system integration",
+    pt: "Automação de fluxo de trabalho e integração de sistemas",
+  },
 
   "skill.data.title": { en: "Data & Analytics", pt: "Dados e Análise" },
-  "skill.data.description": { en: "Business intelligence and data engineering", pt: "Inteligência de negócios e engenharia de dados" },
+  "skill.data.description": {
+    en: "Business intelligence and data engineering",
+    pt: "Inteligência de negócios e engenharia de dados",
+  },
 
   "skill.development.title": { en: "Development", pt: "Desenvolvimento" },
-  "skill.development.description": { en: "Frontend and full-stack development", pt: "Desenvolvimento frontend e full-stack" },
+  "skill.development.description": {
+    en: "Frontend and full-stack development",
+    pt: "Desenvolvimento frontend e full-stack",
+  },
 
   // Experience Section
   "experience.title": { en: "Experience", pt: "Experiência" },
@@ -100,7 +130,10 @@ export const TRANSLATIONS: Translation = {
   },
 
   // Experience 2: Revenue Operations Analyst
-  "e2.title": { en: "Revenue Operations Analyst", pt: "Analista de Revenue Operations" },
+  "e2.title": {
+    en: "Revenue Operations Analyst",
+    pt: "Analista de Revenue Operations",
+  },
   "e2.description": {
     en: "Integrated Sales, Finance, and CS teams through automated reporting and process optimization, improving key performance metrics by 30%+ while preventing R$200,000+ customer churn.",
     pt: "Integrou equipes de Vendas, Finanças e Sucesso do Cliente por meio de relatórios automatizados e otimização de processos, melhorando métricas de desempenho-chave em 30%+ enquanto evitava cancelamento de cliente de R$200.000+.",
@@ -114,8 +147,14 @@ export const TRANSLATIONS: Translation = {
   },
 
   // Contact Section
-  "contact.title": { en: "Let's Build Revenue Operations Excellence Together", pt: "Vamos Construir Excelência em Revenue Operations Juntos" },
-  "contact.subtitle": { en: "Open to Revenue Operations, CRM Analyst, and Data Analytics roles. Available for immediate start.", pt: "Aberto para posições em Revenue Operations, Analista de CRM e Análise de Dados. Disponível para início imediato." },
+  "contact.title": {
+    en: "Let's Build Revenue Operations Excellence Together",
+    pt: "Vamos Construir Excelência em Revenue Operations Juntos",
+  },
+  "contact.subtitle": {
+    en: "Open to Revenue Operations, CRM Analyst, and Data Analytics roles. Available for immediate start.",
+    pt: "Aberto para posições em Revenue Operations, Analista de CRM e Análise de Dados. Disponível para início imediato.",
+  },
   "contact.schedule": { en: "Schedule a Call", pt: "Agendar uma Conversa" },
   "contact.resume": { en: "Download Resume", pt: "Baixar Currículo" },
 
@@ -130,7 +169,7 @@ export const TRANSLATIONS: Translation = {
   // Footer
   "footer.copyright": {
     en: "© 2025 • Designed with Sky Gradient Logic",
-    pt: "© 2025 • Desenvolvido com Sky Gradient Logic"
+    pt: "© 2025 • Desenvolvido com Sky Gradient Logic",
   },
 
   // Sections (for consistency)
@@ -319,7 +358,11 @@ export const PORTFOLIO_ENTRIES: Entry[] = [
           "Deployment: Docker containers with automated CI/CD pipeline",
         ],
       },
-      { type: "link", text: "Visit Live Application", url: "https://notifica-frete.janiceto.com.br" },
+      {
+        type: "link",
+        text: "Visit Live Application",
+        url: "https://notifica-frete.janiceto.com.br",
+      },
     ],
   },
 
@@ -505,8 +548,9 @@ export const CONTACT_INFO = {
     pt: "Aberto para posições em Revenue Operations, Analista de CRM e Análise de Dados. Disponível para início imediato.",
   },
   email: "jeancsla@gmail.com",
-  linkedin: "https://linkedin.com/in/jeancsla",
+  linkedin: "https://www.linkedin.com/in/jean-aniceto/",
   github: "https://github.com/jeancsla",
-  calendly: "https://calendly.com/jeancsla",
-  resumeUrl: "/resume.pdf",
+  calendly: "https://calendar.app.google/yQqyXCrMQpRJaoTu8",
+  resumeUrl:
+    "https://drive.google.com/file/d/1pAOk3QQSgPRf7A1EKhxUQXwzqvZmjgfy/view?usp=sharing",
 };
