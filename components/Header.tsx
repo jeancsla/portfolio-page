@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useSkyTheme } from '../services/theme';
 import { useI18n } from '../services/i18n';
 
@@ -19,12 +20,37 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4">
       <nav className={`glass rounded-full px-6 py-3 flex items-center gap-8 text-sm font-medium transition-colors duration-500 ${isDark ? 'text-white border-white/10' : 'text-slate-800 border-white/20'}`}>
-        <button onClick={() => onNavigate('about')} className="hover:opacity-70">{t('nav.about')}</button>
-        <button onClick={() => onNavigate('projects')} className="hover:opacity-70">{t('nav.projects')}</button>
-        
+        <motion.button
+          onClick={() => onNavigate('about')}
+          className="cursor-pointer"
+          whileHover={{ scale: 1.05, opacity: 0.8 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          {t('nav.about')}
+        </motion.button>
+        <motion.button
+          onClick={() => onNavigate('projects')}
+          className="cursor-pointer"
+          whileHover={{ scale: 1.05, opacity: 0.8 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          {t('nav.projects')}
+        </motion.button>
+        <motion.button
+          onClick={() => onNavigate('skills')}
+          className="cursor-pointer"
+          whileHover={{ scale: 1.05, opacity: 0.8 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          {t('nav.skills')}
+        </motion.button>
+
         {/* Sun/Moon Track */}
         <div className="relative w-16 h-8 bg-black/10 rounded-full flex items-center px-1 overflow-hidden group">
-           <div 
+           <div
              className={`absolute h-6 w-6 rounded-full transition-all duration-1000 flex items-center justify-center shadow-lg transform
                         ${isDark ? 'bg-indigo-300' : 'bg-yellow-400'}`}
              style={{ left: `calc(${iconPos}% - 1.5rem)` }}
@@ -37,8 +63,33 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
            </div>
         </div>
 
-        <button onClick={() => onNavigate('experience')} className="hover:opacity-70">{t('nav.experience')}</button>
-        <button onClick={toggleLang} className="hover:opacity-70 font-bold uppercase w-6">{lang}</button>
+        <motion.button
+          onClick={() => onNavigate('experience')}
+          className="cursor-pointer"
+          whileHover={{ scale: 1.05, opacity: 0.8 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          {t('nav.experience')}
+        </motion.button>
+        <motion.button
+          onClick={() => onNavigate('contact')}
+          className="cursor-pointer"
+          whileHover={{ scale: 1.05, opacity: 0.8 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          {t('nav.contact')}
+        </motion.button>
+        <motion.button
+          onClick={toggleLang}
+          className="font-bold uppercase w-6 cursor-pointer"
+          whileHover={{ scale: 1.1, opacity: 0.8 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
+          {lang}
+        </motion.button>
       </nav>
     </header>
   );

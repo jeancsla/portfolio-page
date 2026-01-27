@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Entry } from '../types';
 import { useSkyTheme } from '../services/theme';
 
@@ -21,14 +22,21 @@ const EntryCard: React.FC<EntryCardProps> = ({ entry, t, onClick }) => {
   };
 
   return (
-    <article 
+    <motion.article
       {...dataAttrs}
-      className={`entry glass p-6 transition-all duration-300 transform hover:-translate-y-1 rounded-2xl cursor-pointer group ${isDark ? 'border-white/10 hover:border-white/30' : 'border-white/30 hover:border-white/60'}`}
+      className={`entry glass p-6 rounded-2xl cursor-pointer group ${isDark ? 'border-white/10' : 'border-white/30'}`}
       onClick={onClick}
+      whileHover={{
+        y: -8,
+        boxShadow: isDark
+          ? '0 20px 60px rgba(0, 0, 0, 0.4)'
+          : '0 20px 60px rgba(0, 0, 0, 0.2)'
+      }}
+      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
     >
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
-          <h3 className={`text-xl font-bold group-hover:text-indigo-400 transition-colors ${isDark ? 'text-white' : 'text-slate-900'}`}>{entry.titleKey}</h3>
+          <h3 className={`text-xl font-bold group-hover:text-indigo-400 transition-colors ${isDark ? 'text-white' : 'text-slate-900'}`}>{t(entry.titleKey)}</h3>
           {entry.company && (
             <p className={`text-sm font-semibold mt-1 ${isDark ? 'text-indigo-300' : 'text-indigo-600'}`}>{entry.company}</p>
           )}
@@ -46,19 +54,42 @@ const EntryCard: React.FC<EntryCardProps> = ({ entry, t, onClick }) => {
       </div>
       
       <p className={`text-sm mb-6 leading-relaxed line-clamp-2 ${isDark ? 'text-white/70' : 'text-slate-600'}`}>
-        {entry.descriptionKey}
+        {t(entry.descriptionKey)}
       </p>
 
       {entry.tags && (
-        <div className="flex flex-wrap gap-2">
+        <motion.div
+          className="flex flex-wrap gap-2"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.05,
+                delayChildren: 0.2,
+              },
+            },
+          }}
+        >
           {entry.tags.map(tag => (
-            <span key={tag} className={`text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded border ${isDark ? 'border-white/10 text-white/40' : 'border-black/10 text-black/40'}`}>
+            <motion.span
+              key={tag}
+              className={`text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded border ${isDark ? 'border-white/10 text-white/40' : 'border-black/10 text-black/40'}`}
+              variants={{
+                hidden: { opacity: 0, scale: 0.8 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              transition={{ duration: 0.3 }}
+            >
               #{tag}
-            </span>
+            </motion.span>
           ))}
-        </div>
+        </motion.div>
       )}
-    </article>
+    </motion.article>
   );
 };
 

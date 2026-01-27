@@ -1,5 +1,5 @@
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -11,8 +11,15 @@ export const useI18n = () => {
 
   const t = useCallback((key: string): string => {
     const entry = TRANSLATIONS[key];
-    if (!entry) return key;
-    return entry[lang];
+    if (!entry) {
+      return key;
+    }
+    const translation = entry[lang];
+    if (!translation) {
+      // Fallback to English if current language translation is missing
+      return entry['en'] || key;
+    }
+    return translation;
   }, [lang]);
 
   const toggleLang = () => {

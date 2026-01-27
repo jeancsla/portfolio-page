@@ -35,3 +35,24 @@ export interface SkyColors {
   end: string;
   isDark: boolean;
 }
+
+export interface SkillCategory {
+  id: string;
+  categoryKey: string;
+  descriptionKey: string;
+  skills: Array<{
+    name: string;
+    level: "expert" | "proficient" | "familiar";
+    icon?: string;
+  }>;
+}
+
+export interface ContactInfo {
+  headline: { en: string; pt: string };
+  subheadline: { en: string; pt: string };
+  email: string;
+  linkedin: string;
+  github: string;
+  calendly?: string;
+  resumeUrl: string;
+}
