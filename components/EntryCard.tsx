@@ -26,12 +26,7 @@ const EntryCard: React.FC<EntryCardProps> = ({ entry, t, onClick }) => {
       {...dataAttrs}
       className={`entry glass p-6 rounded-2xl cursor-pointer group ${isDark ? 'border-white/10' : 'border-white/30'}`}
       onClick={onClick}
-      whileHover={{
-        y: -8,
-        boxShadow: isDark
-          ? '0 20px 60px rgba(0, 0, 0, 0.4)'
-          : '0 20px 60px rgba(0, 0, 0, 0.2)'
-      }}
+      whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 200, damping: 15 }}
     >
       <div className="flex justify-between items-start mb-4">
@@ -58,39 +53,19 @@ const EntryCard: React.FC<EntryCardProps> = ({ entry, t, onClick }) => {
       </p>
 
       {entry.tags && (
-        <motion.div
-          className="flex flex-wrap gap-2"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.05,
-                delayChildren: 0.2,
-              },
-            },
-          }}
-        >
+        <div className="flex flex-wrap gap-2">
           {entry.tags.map(tag => (
-            <motion.span
+            <span
               key={tag}
               className={`text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded border ${isDark ? 'border-white/10 text-white/40' : 'border-black/10 text-black/40'}`}
-              variants={{
-                hidden: { opacity: 0, scale: 0.8 },
-                visible: { opacity: 1, scale: 1 },
-              }}
-              transition={{ duration: 0.3 }}
             >
               #{tag}
-            </motion.span>
+            </span>
           ))}
-        </motion.div>
+        </div>
       )}
     </motion.article>
   );
 };
 
-export default EntryCard;
+export default React.memo(EntryCard);

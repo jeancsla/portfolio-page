@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSkyTheme } from '../services/theme';
 import { useI18n } from '../services/i18n';
@@ -10,7 +10,7 @@ interface HeaderProps {
   lang: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
+const HeaderComponent: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
   const { hour, isDark } = useSkyTheme();
   const { t } = useI18n();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,10 +30,10 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
     };
   }, [mobileMenuOpen]);
 
-  const handleNavClick = (sectionId: string) => {
+  const handleNavClick = useCallback((sectionId: string) => {
     onNavigate(sectionId);
     setMobileMenuOpen(false);
-  };
+  }, [onNavigate]);
 
   const navItems = [
     { id: 'about', label: t('nav.about') },
@@ -96,30 +96,36 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
           transition={{ type: 'spring', stiffness: 300 }}
           aria-label="Toggle menu"
         >
-          <motion.div
-            animate={{ rotate: mobileMenuOpen ? 45 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="relative w-6 h-6 flex flex-col justify-center items-center"
-          >
-            <motion.span
-              animate={{
-                y: mobileMenuOpen ? 10 : 0,
-                rotate: mobileMenuOpen ? 45 : 0,
-              }}
-              className={`h-0.5 w-5 ${isDark ? 'bg-white' : 'bg-slate-800'} rounded-full block absolute transition-all`}
-            />
-            <motion.span
-              animate={{ opacity: mobileMenuOpen ? 0 : 1 }}
-              className={`h-0.5 w-5 ${isDark ? 'bg-white' : 'bg-slate-800'} rounded-full block`}
-            />
-            <motion.span
-              animate={{
-                y: mobileMenuOpen ? -10 : 0,
-                rotate: mobileMenuOpen ? -45 : 0,
-              }}
-              className={`h-0.5 w-5 ${isDark ? 'bg-white' : 'bg-slate-800'} rounded-full block absolute transition-all`}
-            />
-          </motion.div>
+          <style>{`
+            .hamburger {
+              width: 20px;
+              height: 16px;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+            }
+            .hamburger span {
+              display: block;
+              height: 2px;
+              background-color: currentColor;
+              border-radius: 2px;
+              transition: all 0.3s ease;
+            }
+            .hamburger.open span:nth-child(1) {
+              transform: rotate(45deg) translate(8px, 8px);
+            }
+            .hamburger.open span:nth-child(2) {
+              opacity: 0;
+            }
+            .hamburger.open span:nth-child(3) {
+              transform: rotate(-45deg) translate(8px, -8px);
+            }
+          `}</style>
+          <div className={`hamburger ${mobileMenuOpen ? 'open' : ''}`} style={{ color: isDark ? 'white' : '#1e293b' }}>
+            <span />
+            <span />
+            <span />
+          </div>
         </motion.button>
       </div>
 
@@ -134,17 +140,14 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
             className={`absolute top-20 left-4 right-4 glass rounded-3xl p-6 ${isDark ? 'border-white/10' : 'border-white/20'}`}
           >
             <nav className="flex flex-col gap-4">
-              {navItems.map((item, index) => (
-                <motion.button
+              {navItems.map((item) => (
+                <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   className={`text-left px-4 py-3 rounded-xl transition-colors ${isDark ? 'text-white hover:bg-white/10' : 'text-slate-800 hover:bg-white/30'}`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
                 >
                   {item.label}
-                </motion.button>
+                </button>
               ))}
 
               <div className="border-t border-white/10 my-2"></div>
@@ -168,18 +171,15 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
               </div>
 
               {/* Language Toggle */}
-              <motion.button
+              <button
                 onClick={() => {
                   toggleLang();
                   setMobileMenuOpen(false);
                 }}
                 className={`text-left px-4 py-3 rounded-xl font-bold uppercase transition-colors ${isDark ? 'text-white hover:bg-white/10' : 'text-slate-800 hover:bg-white/30'}`}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: navItems.length * 0.05 + 0.1 }}
               >
                 {lang === 'en' ? 'PT' : 'EN'}
-              </motion.button>
+              </button>
             </nav>
           </motion.div>
         )}
@@ -188,4 +188,4 @@ const Header: React.FC<HeaderProps> = ({ onNavigate, toggleLang, lang }) => {
   );
 };
 
-export default Header;
+export default React.memo(HeaderComponent);

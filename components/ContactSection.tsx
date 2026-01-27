@@ -20,11 +20,6 @@ const ContactSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
         viewport={{ once: true, margin: '-100px' }}
-        whileHover={{
-          boxShadow: isDark
-            ? '0 20px 60px rgba(0, 0, 0, 0.4)'
-            : '0 20px 60px rgba(0, 0, 0, 0.2)'
-        }}
       >
         <motion.h2
           className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}
@@ -195,4 +190,4 @@ const ContactSection: React.FC = () => {
   );
 };
 
-export default ContactSection;
+export default React.memo(ContactSection);

@@ -35,12 +35,7 @@ const SkillCard: React.FC<SkillCardProps> = ({ category }) => {
   return (
     <motion.article
       className={`glass p-6 rounded-2xl ${isDark ? 'border-white/10' : 'border-white/30'}`}
-      whileHover={{
-        y: -8,
-        boxShadow: isDark
-          ? '0 20px 60px rgba(0, 0, 0, 0.4)'
-          : '0 20px 60px rgba(0, 0, 0, 0.2)'
-      }}
+      whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 200, damping: 15 }}
     >
       <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>
@@ -51,36 +46,28 @@ const SkillCard: React.FC<SkillCardProps> = ({ category }) => {
       </p>
 
       <div className="space-y-3">
-        {category.skills.map((skill, index) => (
-          <motion.div
+        {category.skills.map((skill) => (
+          <div
             key={skill.name}
             className="flex justify-between items-center"
-            initial={{ opacity: 0, x: -10 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            viewport={{ once: true }}
           >
             <span
               className={`text-sm font-medium ${isDark ? 'text-white/90' : 'text-slate-800'}`}
             >
               {skill.name}
             </span>
-            <motion.span
+            <span
               className={`text-[9px] px-3 py-1 rounded-full uppercase tracking-wider font-bold border ${getLevelColor(
                 skill.level
               )}`}
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ type: 'spring', stiffness: 200, delay: index * 0.05 + 0.1 }}
-              viewport={{ once: true }}
             >
               {t(`skills.level.${skill.level}`)}
-            </motion.span>
-          </motion.div>
+            </span>
+          </div>
         ))}
       </div>
     </motion.article>
   );
 };
 
-export default SkillCard;
+export default React.memo(SkillCard);

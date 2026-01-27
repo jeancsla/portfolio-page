@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Header from './components/Header';
 import EntryCard from './components/EntryCard';
@@ -46,7 +46,7 @@ const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = useCallback((id: string) => {
     try {
       if (currentProject) {
         window.location.hash = '';
@@ -66,28 +66,29 @@ const App: React.FC = () => {
     } catch (error) {
       console.warn('scrollTo error:', error);
     }
-  };
+  }, [currentProject]);
 
-  const handleProjectClick = (project: Entry) => {
+  const handleProjectClick = useCallback((project: Entry) => {
     try {
       window.location.hash = `project/${project.id}`;
     } catch (error) {
       console.error('Failed to navigate to project:', error);
     }
-  };
+  }, []);
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
     try {
       window.location.hash = '';
     } catch (error) {
       console.warn('goBack error:', error);
     }
-  };
+  }, []);
 
   const projects = PORTFOLIO_ENTRIES.filter(e => e.type === 'project');
   const experiences = PORTFOLIO_ENTRIES.filter(e => e.type === 'experience');
   const { scrollYProgress } = useScroll();
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  // Reduced parallax distance for better performance and reduced perceived jank
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -30]);
 
   return (
     <div
