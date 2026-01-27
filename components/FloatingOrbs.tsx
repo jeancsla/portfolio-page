@@ -34,7 +34,7 @@ const FloatingOrb: React.FC<FloatingOrbProps> = ({ delay, duration, size, color,
 
 const FloatingOrbs: React.FC = () => {
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0 hidden md:block">
       <FloatingOrb
         delay={0}
         duration={20}

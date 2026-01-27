@@ -115,6 +115,24 @@
       ::-webkit-scrollbar-thumb:hover {
         background: rgba(255, 255, 255, 0.3);
       }
+      /* Optimize glassmorphism for mobile */
+      @media (max-width: 768px) {
+        .glass {
+          backdrop-filter: blur(8px) saturate(150%);
+        }
+        .glass-dark {
+          backdrop-filter: blur(8px) saturate(150%);
+        }
+      }
+      /* Fallback for browsers without backdrop-filter support */
+      @supports not (backdrop-filter: blur(12px)) {
+        .glass {
+          background: rgba(255, 255, 255, 0.9) !important;
+        }
+        .glass-dark {
+          background: rgba(0, 0, 0, 0.8) !important;
+        }
+      }
     </style>
 <script type="importmap">
 {

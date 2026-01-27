@@ -13,9 +13,9 @@ const ContactSection: React.FC = () => {
   const subheadline = CONTACT_INFO.subheadline[lang as keyof typeof CONTACT_INFO.subheadline];
 
   return (
-    <section id="contact" className="mb-32">
+    <section id="contact" className="mb-16 sm:mb-24 md:mb-32">
       <motion.div
-        className={`glass p-12 md:p-16 rounded-3xl text-center ${isDark ? 'border-white/10' : 'border-white/30'}`}
+        className={`glass p-8 sm:p-10 md:p-12 lg:p-16 rounded-3xl text-center ${isDark ? 'border-white/10' : 'border-white/30'}`}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
@@ -27,7 +27,7 @@ const ContactSection: React.FC = () => {
         }}
       >
         <motion.h2
-          className={`text-4xl md:text-5xl font-bold mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}
+          className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -36,7 +36,7 @@ const ContactSection: React.FC = () => {
           {headline}
         </motion.h2>
         <motion.p
-          className={`text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed ${isDark ? 'text-white/70' : 'text-slate-700'}`}
+          className={`text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed ${isDark ? 'text-white/70' : 'text-slate-700'}`}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}

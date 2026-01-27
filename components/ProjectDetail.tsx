@@ -15,7 +15,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, t, onBack }) => 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    try {
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.warn('scrollTo failed:', error);
+      try {
+        document.documentElement.scrollTop = 0;
+      } catch (fallbackError) {
+        console.warn('fallback scrollTop failed:', fallbackError);
+      }
+    }
     if (project.github && project.showReadme) {
       setLoading(true);
       setTimeout(() => {
@@ -93,7 +102,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, t, onBack }) => 
         </button>
       </div>
 
-      <div className={`glass p-8 md:p-16 rounded-[2.5rem] ${isDark ? 'border-white/10' : 'border-white/20'}`}>
+      <div className={`glass p-6 sm:p-8 md:p-16 rounded-[2.5rem] ${isDark ? 'border-white/10' : 'border-white/20'}`}>
         {/* Header Section */}
         <div className="mb-12">
           <div className="flex flex-wrap gap-2 mb-6">
@@ -106,10 +115,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, t, onBack }) => 
               </span>
             ))}
           </div>
-          <h1 className={`text-5xl md:text-7xl font-black mb-8 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
+          <h1 className={`text-4xl sm:text-5xl md:text-7xl font-black mb-8 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
             {project.titleKey}
           </h1>
-          <p className={`text-xl md:text-2xl font-light italic opacity-60 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+          <p className={`text-lg sm:text-xl md:text-2xl font-light italic opacity-60 ${isDark ? 'text-white' : 'text-slate-900'}`}>
             {project.descriptionKey}
           </p>
         </div>

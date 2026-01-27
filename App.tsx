@@ -17,20 +17,25 @@ const App: React.FC = () => {
   const { lang, t, toggleLang } = useI18n();
   const [currentProject, setCurrentProject] = useState<Entry | null>(null);
 
-  // Simple hash-based routing
+  // Simple hash-based routing with error handling
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash.startsWith('#project/')) {
-        const id = hash.replace('#project/', '');
-        const project = PORTFOLIO_ENTRIES.find(p => p.id === id);
-        if (project) {
-          setCurrentProject(project);
+      try {
+        const hash = window.location.hash;
+        if (hash.startsWith('#project/')) {
+          const id = hash.replace('#project/', '');
+          const project = PORTFOLIO_ENTRIES.find(p => p.id === id);
+          if (project) {
+            setCurrentProject(project);
+          } else {
+            setCurrentProject(null);
+            window.location.hash = '';
+          }
         } else {
           setCurrentProject(null);
-          window.location.hash = '';
         }
-      } else {
+      } catch (error) {
+        console.error('Hash navigation error:', error);
         setCurrentProject(null);
       }
     };
@@ -42,25 +47,41 @@ const App: React.FC = () => {
   }, []);
 
   const scrollTo = (id: string) => {
-    if (currentProject) {
-      window.location.hash = '';
-      // Small delay to allow home page to mount before scrolling
-      setTimeout(() => {
+    try {
+      if (currentProject) {
+        window.location.hash = '';
+        // Small delay to allow home page to mount before scrolling
+        setTimeout(() => {
+          try {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          } catch (error) {
+            console.warn('scrollIntoView failed:', error);
+          }
+        }, 50);
+      } else {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 50);
-    } else {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } catch (error) {
+      console.warn('scrollTo error:', error);
     }
   };
 
   const handleProjectClick = (project: Entry) => {
-    window.location.hash = `project/${project.id}`;
+    try {
+      window.location.hash = `project/${project.id}`;
+    } catch (error) {
+      console.error('Failed to navigate to project:', error);
+    }
   };
 
   const goBack = () => {
-    window.location.hash = '';
+    try {
+      window.location.hash = '';
+    } catch (error) {
+      console.warn('goBack error:', error);
+    }
   };
 
   const projects = PORTFOLIO_ENTRIES.filter(e => e.type === 'project');
@@ -104,15 +125,15 @@ const App: React.FC = () => {
 
       <Header onNavigate={scrollTo} toggleLang={toggleLang} lang={lang} />
 
-      <main className="container mx-auto px-6 pt-32 max-w-4xl">
+      <main className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-28 md:pt-32 max-w-4xl">
         {currentProject ? (
           <ProjectDetail project={currentProject} t={t} onBack={goBack} />
         ) : (
           <div>
             {/* Hero Section */}
-            <section id="hero" className="mb-32 text-center md:text-left">
+            <section id="hero" className="mb-16 sm:mb-24 md:mb-32 text-center md:text-left">
               <motion.h1
-                className={`text-6xl md:text-8xl font-black mb-6 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}
+                className={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -120,7 +141,7 @@ const App: React.FC = () => {
                 {t('hero.title')}
               </motion.h1>
               <motion.p
-                className={`text-xl md:text-2xl max-w-2xl font-light leading-relaxed ${isDark ? 'text-white/70' : 'text-slate-700'}`}
+                className={`text-lg sm:text-xl md:text-2xl max-w-2xl font-light leading-relaxed ${isDark ? 'text-white/70' : 'text-slate-700'}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
@@ -130,27 +151,27 @@ const App: React.FC = () => {
             </section>
 
             {/* About Section */}
-            <section id="about" className="mb-32">
+            <section id="about" className="mb-16 sm:mb-24 md:mb-32">
               <motion.div
-                className={`glass p-8 rounded-3xl ${isDark ? 'border-white/10' : 'border-white/20'}`}
+                className={`glass p-6 sm:p-8 md:p-10 rounded-3xl ${isDark ? 'border-white/10' : 'border-white/20'}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
                 viewport={{ once: true, margin: '-100px' }}
               >
-                <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   {t('about.title')}
                 </h2>
-                <p className={`text-lg leading-loose ${isDark ? 'text-white/80' : 'text-slate-700'}`}>
+                <p className={`text-base sm:text-lg leading-loose ${isDark ? 'text-white/80' : 'text-slate-700'}`}>
                   {t('about.text')}
                 </p>
               </motion.div>
             </section>
 
             {/* Projects Section */}
-            <section id="projects" className="mb-32">
+            <section id="projects" className="mb-16 sm:mb-24 md:mb-32">
               <motion.h2
-                className={`text-4xl font-bold mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -194,9 +215,9 @@ const App: React.FC = () => {
             </section>
 
             {/* Skills Section */}
-            <section id="skills" className="mb-32">
+            <section id="skills" className="mb-16 sm:mb-24 md:mb-32">
               <motion.h2
-                className={`text-4xl font-bold mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
@@ -236,9 +257,9 @@ const App: React.FC = () => {
             </section>
 
             {/* Experience Section */}
-            <section id="experience" className="mb-32">
+            <section id="experience" className="mb-16 sm:mb-24 md:mb-32">
               <motion.h2
-                className={`text-4xl font-bold mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
+                className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: 'easeOut' }}
