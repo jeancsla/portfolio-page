@@ -1,20 +1,31 @@
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  Suspense,
+  lazy,
+} from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Header from "./components/Header";
+import FloatingOrbs from "./components/FloatingOrbs";
+import { PORTFOLIO_ENTRIES } from "./constants";
+import { Entry } from "./types";
+import { useAppContext } from "./services/AppContext";
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Header from './components/Header';
-import EntryCard from './components/EntryCard';
-import ProjectDetail from './components/ProjectDetail';
-import SkillCard from './components/SkillCard';
-import ContactSection from './components/ContactSection';
-import { useSkyTheme } from './services/theme';
-import { useI18n } from './services/i18n';
-import { PORTFOLIO_ENTRIES, SKILL_CATEGORIES } from './constants';
-import { Entry } from './types';
-import FloatingOrbs from './components/FloatingOrbs';
+// Sections
+import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import ProjectsSection from "./components/sections/ProjectsSection";
+import SkillsSection from "./components/sections/SkillsSection";
+import ExperienceSection from "./components/sections/ExperienceSection";
+import ContactSection from "./components/ContactSection";
+
+// Lazy loaded components
+const ProjectDetail = lazy(() => import("./components/ProjectDetail"));
 
 const App: React.FC = () => {
-  const { start, end, isDark } = useSkyTheme();
-  const { lang, t, toggleLang } = useI18n();
+  const { start, end, isDark, t, lang, toggleLang } = useAppContext();
   const [currentProject, setCurrentProject] = useState<Entry | null>(null);
 
   // Simple hash-based routing with error handling
@@ -22,80 +33,126 @@ const App: React.FC = () => {
     const handleHashChange = () => {
       try {
         const hash = window.location.hash;
-        if (hash.startsWith('#project/')) {
-          const id = hash.replace('#project/', '');
-          const project = PORTFOLIO_ENTRIES.find(p => p.id === id);
+        if (hash.startsWith("#project/")) {
+          const id = hash.replace("#project/", "");
+          const project = PORTFOLIO_ENTRIES.find((p) => p.id === id);
           if (project) {
             setCurrentProject(project);
           } else {
             setCurrentProject(null);
-            window.location.hash = '';
+            window.location.hash = "";
           }
         } else {
           setCurrentProject(null);
         }
       } catch (error) {
-        console.error('Hash navigation error:', error);
+        console.error("Hash navigation error:", error);
         setCurrentProject(null);
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener("hashchange", handleHashChange);
     handleHashChange(); // Initial check
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  const scrollTo = useCallback((id: string) => {
-    try {
-      if (currentProject) {
-        window.location.hash = '';
-        // Small delay to allow home page to mount before scrolling
-        setTimeout(() => {
-          try {
-            const el = document.getElementById(id);
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          } catch (error) {
-            console.warn('scrollIntoView failed:', error);
-          }
-        }, 50);
-      } else {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const scrollTo = useCallback(
+    (id: string) => {
+      try {
+        if (currentProject) {
+          window.location.hash = "";
+          // Small delay to allow home page to mount before scrolling
+          setTimeout(() => {
+            try {
+              const el = document.getElementById(id);
+              if (el) el.scrollIntoView({ behavior: "smooth" });
+            } catch (error) {
+              console.warn("scrollIntoView failed:", error);
+            }
+          }, 50);
+        } else {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+      } catch (error) {
+        console.warn("scrollTo error:", error);
       }
-    } catch (error) {
-      console.warn('scrollTo error:', error);
-    }
-  }, [currentProject]);
+    },
+    [currentProject],
+  );
 
   const handleProjectClick = useCallback((project: Entry) => {
     try {
       window.location.hash = `project/${project.id}`;
     } catch (error) {
-      console.error('Failed to navigate to project:', error);
+      console.error("Failed to navigate to project:", error);
     }
   }, []);
 
   const goBack = useCallback(() => {
     try {
-      window.location.hash = '';
+      window.location.hash = "";
     } catch (error) {
-      console.warn('goBack error:', error);
+      console.warn("goBack error:", error);
     }
   }, []);
 
-  const projects = PORTFOLIO_ENTRIES.filter(e => e.type === 'project');
-  const experiences = PORTFOLIO_ENTRIES.filter(e => e.type === 'experience');
+  const projects = useMemo(
+    () => PORTFOLIO_ENTRIES.filter((e) => e.type === "project"),
+    [],
+  );
+  const experiences = useMemo(
+    () => PORTFOLIO_ENTRIES.filter((e) => e.type === "experience"),
+    [],
+  );
+
   const { scrollYProgress } = useScroll();
-  // Reduced parallax distance for better performance and reduced perceived jank
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+
+  const jsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Jean Aniceto",
+      jobTitle: "Revenue Operations Analyst",
+      description:
+        "Revenue Operations professional with expertise in CRM management, data automation, and business intelligence. Proven track record improving forecast accuracy by 15% and reducing manual work by 20+ hours/week.",
+      url: "https://jeancsla.github.io/portfolio-page/",
+      sameAs: [
+        "https://linkedin.com/in/jeancsla",
+        "https://github.com/jeancsla",
+      ],
+      knowsAbout: [
+        "Revenue Operations",
+        "CRM Management",
+        "HubSpot",
+        "Data Analytics",
+        "Business Intelligence",
+        "Process Automation",
+        "SQL",
+        "n8n",
+        "Revenue Forecasting",
+        "Customer Retention",
+        "Data Pipelines",
+        "Workflow Automation",
+      ],
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "Revenue Operations Analyst",
+        skills:
+          "HubSpot CRM, SQL, n8n, Python, Data Analytics, Process Automation, Revenue Forecasting",
+      },
+    }),
+    [],
+  );
 
   return (
     <div
-      className="min-h-screen transition-colors duration-[2000ms] pb-20 relative overflow-hidden"
+      className="min-h-screen transition-colors duration-[2000ms] pb-20 relative"
       style={{
         background: `linear-gradient(to bottom, ${start}, ${end})`,
-        backgroundAttachment: 'fixed'
+        backgroundAttachment: "fixed",
       }}
     >
       {/* Parallax Background Layer */}
@@ -115,10 +172,8 @@ const App: React.FC = () => {
         />
       </motion.div>
 
-      {/* Floating Orbs */}
       <FloatingOrbs />
 
-      {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500 origin-left z-50"
         style={{ scaleX: scrollYProgress }}
@@ -126,222 +181,36 @@ const App: React.FC = () => {
 
       <Header onNavigate={scrollTo} toggleLang={toggleLang} lang={lang} />
 
-      <main className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-28 md:pt-32 max-w-4xl">
-        {currentProject ? (
-          <ProjectDetail project={currentProject} t={t} onBack={goBack} />
-        ) : (
-          <div>
-            {/* Hero Section */}
-            <section id="hero" className="mb-16 sm:mb-24 md:mb-32 text-center md:text-left">
-              <motion.h1
-                className={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black mb-6 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-              >
-                {t('hero.title')}
-              </motion.h1>
-              <motion.p
-                className={`text-lg sm:text-xl md:text-2xl max-w-2xl font-light leading-relaxed ${isDark ? 'text-white/70' : 'text-slate-700'}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-              >
-                {t('hero.subtitle')}
-              </motion.p>
-            </section>
+      <main className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-28 md:pt-32 max-w-4xl relative z-10">
+        <Suspense
+          fallback={
+            <div className="min-h-[60vh] flex items-center justify-center opacity-50">
+              Loading...
+            </div>
+          }
+        >
+          {currentProject ? (
+            <ProjectDetail project={currentProject} t={t} onBack={goBack} />
+          ) : (
+            <>
+              <Hero />
+              <About />
+              <ProjectsSection
+                projects={projects}
+                onProjectClick={handleProjectClick}
+              />
+              <SkillsSection />
+              <ExperienceSection experiences={experiences} />
+              <ContactSection />
+            </>
+          )}
+        </Suspense>
 
-            {/* About Section */}
-            <section id="about" className="mb-16 sm:mb-24 md:mb-32">
-              <motion.div
-                className={`glass p-6 sm:p-8 md:p-10 rounded-3xl ${isDark ? 'border-white/10' : 'border-white/20'}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                viewport={{ once: true, margin: '-100px' }}
-              >
-                <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                  {t('about.title')}
-                </h2>
-                <p className={`text-base sm:text-lg leading-loose ${isDark ? 'text-white/80' : 'text-slate-700'}`}>
-                  {t('about.text')}
-                </p>
-              </motion.div>
-            </section>
-
-            {/* Projects Section */}
-            <section id="projects" className="mb-16 sm:mb-24 md:mb-32">
-              <motion.h2
-                className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                viewport={{ once: true, margin: '-50px' }}
-              >
-                {t('section.projects')}
-              </motion.h2>
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-100px' }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.1,
-                      delayChildren: 0.1,
-                    },
-                  },
-                }}
-              >
-                {projects.map(entry => (
-                  <motion.div
-                    key={entry.id}
-                    variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: { opacity: 1, y: 0 },
-                    }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                  >
-                    <EntryCard
-                      entry={entry}
-                      t={t}
-                      onClick={() => handleProjectClick(entry)}
-                    />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </section>
-
-            {/* Skills Section */}
-            <section id="skills" className="mb-16 sm:mb-24 md:mb-32">
-              <motion.h2
-                className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                viewport={{ once: true, margin: '-50px' }}
-              >
-                {t('section.skills')}
-              </motion.h2>
-              <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-100px' }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.08,
-                      delayChildren: 0.1,
-                    },
-                  },
-                }}
-              >
-                {SKILL_CATEGORIES.map(category => (
-                  <motion.div
-                    key={category.id}
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.9, y: 20 },
-                      visible: { opacity: 1, scale: 1, y: 0 },
-                    }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                  >
-                    <SkillCard category={category} />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </section>
-
-            {/* Experience Section */}
-            <section id="experience" className="mb-16 sm:mb-24 md:mb-32">
-              <motion.h2
-                className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 ${isDark ? 'text-white' : 'text-slate-900'}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-                viewport={{ once: true, margin: '-50px' }}
-              >
-                {t('section.experience')}
-              </motion.h2>
-              <motion.div
-                className="space-y-6"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-100px' }}
-                variants={{
-                  hidden: { opacity: 0 },
-                  visible: {
-                    opacity: 1,
-                    transition: {
-                      staggerChildren: 0.1,
-                      delayChildren: 0.1,
-                    },
-                  },
-                }}
-              >
-                {experiences.map(entry => (
-                  <motion.div
-                    key={entry.id}
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: { opacity: 1, x: 0 },
-                    }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
-                  >
-                    <EntryCard entry={entry} t={t} />
-                  </motion.div>
-                ))}
-              </motion.div>
-            </section>
-
-            {/* Contact Section */}
-            <ContactSection />
-          </div>
-        )}
-
-        {/* SEO Script Simulation */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Jean Aniceto",
-            "jobTitle": "Revenue Operations Analyst",
-            "description": "Revenue Operations professional with expertise in CRM management, data automation, and business intelligence. Proven track record improving forecast accuracy by 15% and reducing manual work by 20+ hours/week.",
-            "url": "https://jeancsla.github.io/portfolio-page/",
-            "sameAs": [
-              "https://linkedin.com/in/jeancsla",
-              "https://github.com/jeancsla"
-            ],
-            "knowsAbout": [
-              "Revenue Operations",
-              "CRM Management",
-              "HubSpot",
-              "Data Analytics",
-              "Business Intelligence",
-              "Process Automation",
-              "SQL",
-              "n8n",
-              "Revenue Forecasting",
-              "Customer Retention",
-              "Data Pipelines",
-              "Workflow Automation"
-            ],
-            "hasOccupation": {
-              "@type": "Occupation",
-              "name": "Revenue Operations Analyst",
-              "skills": "HubSpot CRM, SQL, n8n, Python, Data Analytics, Process Automation, Revenue Forecasting"
-            }
-          })}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </main>
 
       <footer className="container mx-auto px-6 text-center opacity-40 text-sm">
-        <p>{t('footer.copyright')}</p>
+        <p>{t("footer.copyright")}</p>
       </footer>
     </div>
   );
