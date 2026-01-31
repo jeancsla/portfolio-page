@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Entry, ContentBlock } from "../types";
 import { useSkyTheme } from "../services/theme";
+import { PORTFOLIO_ENTRIES } from "../constants";
 
 interface ProjectDetailProps {
   project: Entry;
@@ -17,6 +18,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   const [readme, setReadme] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  // Projects navigation logic
+  const projects = PORTFOLIO_ENTRIES.filter((e) => e.type === "project");
+  const currentIndex = projects.findIndex((p) => p.id === project.id);
+  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const prevProject =
+    projects[(currentIndex - 1 + projects.length) % projects.length];
+
   useEffect(() => {
     try {
       window.scrollTo(0, 0);
@@ -30,12 +38,35 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     }
     if (project.github && project.showReadme) {
       setLoading(true);
-      setTimeout(() => {
-        setReadme(
-          `### GitHub README Data\n\nThis project is actively maintained on GitHub. You can find detailed technical documentation, contribution guidelines, and the full codebase at ${project.github}.\n\n*Last synchronized: ${new Date().toLocaleDateString()}*`,
-        );
-        setLoading(false);
-      }, 800);
+      const fetchReadme = async () => {
+        try {
+          // Try main branch first, then master
+          const branches = ["main", "master"];
+          let content = "";
+          for (const branch of branches) {
+            const res = await fetch(
+              `https://raw.githubusercontent.com/${project.github}/${branch}/README.md`,
+            );
+            if (res.ok) {
+              content = await res.text();
+              break;
+            }
+          }
+
+          if (content) {
+            setReadme(content);
+          } else {
+            console.error("README not found on main or master branches");
+            setReadme(t("github.error"));
+          }
+        } catch (error) {
+          console.error("Failed to fetch README:", error);
+          setReadme(t("github.error"));
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchReadme();
     }
   }, [project]);
 
@@ -240,6 +271,46 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             )}
           </div>
         )}
+        {/* Navigation Footer */}
+        <div
+          className={`mt-16 pt-12 border-t flex flex-col sm:flex-row items-center justify-between gap-8 ${isDark ? "border-white/10" : "border-black/5"}`}
+        >
+          {prevProject && (
+            <a
+              href={`#project/${prevProject.id}`}
+              className={`flex-1 w-full group p-6 rounded-3xl border transition-all text-left ${isDark ? "border-white/10 hover:bg-white/5" : "border-black/5 hover:bg-black/5"}`}
+            >
+              <div
+                className={`text-[10px] font-bold uppercase tracking-widest mb-2 opacity-50 ${isDark ? "text-white" : "text-black"}`}
+              >
+                {t("nav.previous")}
+              </div>
+              <div
+                className={`text-xl font-black transition-transform group-hover:-translate-x-1 ${isDark ? "text-white" : "text-slate-900"}`}
+              >
+                ← {t(prevProject.titleKey)}
+              </div>
+            </a>
+          )}
+
+          {nextProject && (
+            <a
+              href={`#project/${nextProject.id}`}
+              className={`flex-1 w-full group p-6 rounded-3xl border transition-all text-right ${isDark ? "border-white/10 hover:bg-white/5" : "border-black/5 hover:bg-black/5"}`}
+            >
+              <div
+                className={`text-[10px] font-bold uppercase tracking-widest mb-2 opacity-50 ${isDark ? "text-white" : "text-black"}`}
+              >
+                {t("nav.next")}
+              </div>
+              <div
+                className={`text-xl font-black transition-transform group-hover:translate-x-1 ${isDark ? "text-white" : "text-slate-900"}`}
+              >
+                {t(nextProject.titleKey)} →
+              </div>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
