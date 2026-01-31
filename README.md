@@ -23,10 +23,9 @@ A modern, fully bilingual (EN/PT) portfolio showcasing expertise in **Revenue Op
 ## 📂 Featured Projects
 
 1. **Notifica-Frete**: Full-stack freight notification platform with 500+ users.
-2. **Revenue Data Platform**: $2M+ ARR automation and forecasting system.
-3. **WhatsApp Job Agent**: Automated notification system saving 100+ work hours monthly.
-4. **CRM Data Quality**: Automated validation pipelines for 100k+ records.
-5. **WhatsApp Survey MVP**: Rapidly deployed customer retention system saving R$200k+ ARR.
+2. **WhatsApp Job Agent**: Automated notification system saving 100+ work hours monthly.
+3. **CRM Data Quality**: Automated validation pipelines for 100k+ records.
+4. **WhatsApp Survey MVP**: Rapidly deployed customer retention system saving R$200k+ ARR.
 
 ## ⚡ Quick Start
 
@@ -43,7 +42,6 @@ npm run build # or 'bun run build'
 
 ## � Let's Connect
 
-- **Email**: [jeancsla@gmail.com](mailto:jeancsla@gmail.com)
 - **LinkedIn**: [jean-aniceto](https://www.linkedin.com/in/jean-aniceto/)
 - **GitHub**: [@jeancsla](https://github.com/jeancsla)
 - **Calendar**: [Schedule a meeting](https://calendar.app.google/yQqyXCrMQpRJaoTu8)
