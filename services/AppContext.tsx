@@ -85,17 +85,17 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
 
       let colors: SkyColors;
       if (h >= 5 && h < 9) {
-        // Dawn
-        colors = { start: "#fcd34d", end: "#60a5fa", isDark: false };
+        // Dawn: Frosted Blue to Cornflower Ocean
+        colors = { start: "#a6e1fa", end: "#0e6ba8", isDark: false };
       } else if (h >= 9 && h < 17) {
-        // Day
-        colors = { start: "#60a5fa", end: "#2563eb", isDark: false };
+        // Day: Cornflower Ocean to Imperial Blue
+        colors = { start: "#0e6ba8", end: "#0a2472", isDark: true };
       } else if (h >= 17 && h < 20) {
-        // Sunset
-        colors = { start: "#f97316", end: "#7c3aed", isDark: true };
+        // Sunset: Imperial Blue to Prussian Blue
+        colors = { start: "#0a2472", end: "#00072d", isDark: true };
       } else {
-        // Night
-        colors = { start: "#1e1b4b", end: "#020617", isDark: true };
+        // Night: Prussian Blue to Deep Navy
+        colors = { start: "#00072d", end: "#001c55", isDark: true };
       }
       setTheme(colors);
     };

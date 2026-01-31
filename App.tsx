@@ -185,7 +185,7 @@ const App: React.FC = () => {
         <Suspense
           fallback={
             <div className="min-h-[60vh] flex items-center justify-center opacity-50">
-              Loading...
+              {t("app.loading")}
             </div>
           }
         >
@@ -209,7 +209,9 @@ const App: React.FC = () => {
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </main>
 
-      <footer className="container mx-auto px-6 text-center opacity-40 text-sm">
+      <footer
+        className={`container mx-auto px-6 text-center text-sm ${isDark ? "text-white/40" : "text-slate-900/40"}`}
+      >
         <p>{t("footer.copyright")}</p>
       </footer>
     </div>

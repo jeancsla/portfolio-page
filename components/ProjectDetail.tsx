@@ -47,7 +47,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             key={index}
             className={`text-2xl font-bold mt-12 mb-6 ${isDark ? "text-white" : "text-slate-900"}`}
           >
-            {block.text}
+            {t(block.text || "")}
           </h2>
         );
       case "paragraph":
@@ -56,7 +56,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             key={index}
             className={`text-lg leading-relaxed mb-6 ${isDark ? "text-white/80" : "text-slate-700"}`}
           >
-            {block.text}
+            {t(block.text || "")}
           </p>
         );
       case "image":
@@ -75,7 +75,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               <figcaption
                 className={`mt-4 text-sm italic text-center ${isDark ? "text-white/50" : "text-slate-500"}`}
               >
-                {block.text}
+                {t(block.text || "")}
               </figcaption>
             )}
           </figure>
@@ -91,7 +91,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 <span
                   className={`mt-2.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${isDark ? "bg-indigo-400" : "bg-indigo-600"}`}
                 ></span>
-                {item}
+                {t(item)}
               </li>
             ))}
           </ul>
@@ -105,7 +105,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             rel="noreferrer"
             className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl border transition-all mb-8 ${isDark ? "border-white/20 hover:bg-white/10 text-white" : "border-indigo-200 hover:bg-indigo-50 text-indigo-700"}`}
           >
-            <span>{block.text}</span>
+            <span>{t(block.text || "")}</span>
             <svg
               className="w-4 h-4"
               fill="none"
@@ -146,7 +146,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               d="M15 19l-7-7 7-7"
             ></path>
           </svg>
-          {t("github.view").split(" ")[1] === "on" ? "Back" : "Voltar"}
+          {t("nav.back")}
         </button>
       </div>
 
@@ -198,7 +198,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               <h2
                 className={`text-2xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}
               >
-                Repository Details
+                {t("project.repo_details")}
               </h2>
               <a
                 href={`https://github.com/${project.github}`}
