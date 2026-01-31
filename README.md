@@ -1,6 +1,7 @@
 # Jean Aniceto - Revenue Operations Portfolio
 
 A modern, fully bilingual (EN/PT) portfolio showcasing expertise in **Revenue Operations, Automation, and Data Analytics**. Designed to bridge the gap between technical execution and business impact.
+A modern, fully bilingual (EN/PT) portfolio showcasing expertise in **Revenue Operations, Automation, and Data Analytics**. Designed to bridge the gap between technical execution and business impact.
 
 **Live Demo:** [jeancsla.github.io/portfolio-page](https://jeancsla.github.io/portfolio-page)
 
@@ -29,6 +30,8 @@ A modern, fully bilingual (EN/PT) portfolio showcasing expertise in **Revenue Op
 
 ## ⚡ Quick Start
 
+## ⚡ Quick Start
+
 ```bash
 # Install dependencies
 npm install  # or 'bun install'
@@ -44,6 +47,12 @@ npm run build # or 'bun run build'
 
 - **LinkedIn**: [jean-aniceto](https://www.linkedin.com/in/jean-aniceto/)
 - **GitHub**: [@jeancsla](https://github.com/jeancsla)
+- **Calendar**: [Schedule a meeting](https://calendar.app.google/yQqyXCrMQpRJaoTu8)
+
+---
+
+_Built with React 19, TypeScript, and Framer Motion._
+
 - **Calendar**: [Schedule a meeting](https://calendar.app.google/yQqyXCrMQpRJaoTu8)
 
 ---
