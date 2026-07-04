@@ -1,197 +1,921 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jean Carlos - RevOps, CRM e Automação</title>
+  <meta name="description" content="Site pessoal de Jean Carlos. RevOps, CRM, automação, dados e sistemas internos para operações comerciais, CS e marketing.">
+  <meta name="author" content="Jean Carlos">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jean Carlos - RevOps, CRM e Automação">
+  <meta property="og:description" content="RevOps, CRM, automação, dados e sistemas internos para operações comerciais.">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#f6f3ed">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23191d24'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial,sans-serif' font-size='18' font-weight='700' fill='%23f6f3ed'%3EJC%3C/text%3E%3C/svg%3E">
 
-    <!-- Primary Meta Tags -->
-    <title>
-      Jean Aniceto - Revenue Operations Analyst | CRM Expert & Data Analytics
-    </title>
-    <meta
-      name="title"
-      content="Jean Aniceto - Revenue Operations Analyst | CRM Expert & Data Analytics"
-    />
-    <meta
-      name="description"
-      content="Revenue Operations professional with expertise in HubSpot CRM, data automation, and business intelligence. Proven track record improving forecast accuracy by 15% and reducing manual work by 20+ hours/week. Customer retention specialist who saved R$200,000+ in annual revenue."
-    />
-    <meta
-      name="keywords"
-      content="Revenue Operations, RevOps, CRM Analyst, HubSpot, n8n automation, SQL, Data Analytics, Business Intelligence, SaaS metrics, Revenue Forecasting, Customer Retention, Process Automation"
-    />
-    <meta name="author" content="Jean Aniceto" />
-    <meta name="robots" content="index, follow" />
-    <meta name="language" content="English" />
+  <style>
+    :root {
+      --paper:#f6f3ed;
+      --surface:#fffdf8;
+      --ink:#191d24;
+      --muted:#687385;
+      --line:#d9d1c2;
+      --line-strong:#bfb5a5;
+      --teal:#164f5f;
+      --clay:#b96543;
+      --ok:#2b6c58;
+      --error:#9f1239;
+      --max:1040px;
+      --sans:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://jeancsla.github.io/portfolio-page/"
-    />
-    <meta
-      property="og:title"
-      content="Jean Aniceto - Revenue Operations Analyst"
-    />
-    <meta
-      property="og:description"
-      content="Revenue Operations professional specializing in CRM automation, data pipelines, and revenue analytics. Saved R$200,000+ through customer retention and automation."
-    />
-    <meta
-      property="og:image"
-      content="https://jeancsla.github.io/portfolio-page/preview.png"
-    />
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
+    body {
+      margin:0;
+      min-width:320px;
+      overflow-x:hidden;
+      color:var(--ink);
+      background:
+        linear-gradient(90deg, rgba(25,29,36,.035) 1px, transparent 1px) 0 0/80px 80px,
+        linear-gradient(rgba(25,29,36,.035) 1px, transparent 1px) 0 0/80px 80px,
+        var(--paper);
+      font:16px/1.55 var(--sans);
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+    }
+    body.no-scroll { overflow:hidden; }
+    a { color:inherit; text-decoration:none; }
+    button, input { font:inherit; }
+    button { -webkit-tap-highlight-color:transparent; }
+    ::selection { background:var(--ink); color:var(--surface); }
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta
-      property="twitter:url"
-      content="https://jeancsla.github.io/portfolio-page/"
-    />
-    <meta
-      property="twitter:title"
-      content="Jean Aniceto - Revenue Operations Analyst"
-    />
-    <meta
-      property="twitter:description"
-      content="Revenue Operations professional specializing in CRM automation, data pipelines, and revenue analytics."
-    />
-    <meta
-      property="twitter:image"
-      content="https://jeancsla.github.io/portfolio-page/preview.png"
-    />
+    .wrap { width:min(var(--max), calc(100% - 44px)); margin-inline:auto; }
+    .skip {
+      position:absolute; top:-80px; left:16px; z-index:100;
+      padding:10px 12px; border-radius:8px; background:var(--ink); color:var(--surface);
+    }
+    .skip:focus { top:16px; }
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://jeancsla.github.io/portfolio-page/" />
+    .topbar {
+      position:sticky; top:0; z-index:50;
+      border-bottom:1px solid rgba(217,209,194,.9);
+      background:rgba(246,243,237,.92);
+      backdrop-filter:blur(14px);
+    }
+    .scroll-progress {
+      position:fixed; top:0; left:0; z-index:90; width:100%; height:3px;
+      transform:scaleX(0); transform-origin:left;
+      background:linear-gradient(90deg, var(--clay), var(--teal));
+      pointer-events:none;
+    }
+    .nav { min-height:64px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:flex; align-items:center; gap:12px; min-width:0; }
+    .mark {
+      width:36px; height:36px; border-radius:50%; display:grid; place-items:center;
+      background:var(--ink); color:var(--surface); font:12px var(--mono); flex:0 0 auto;
+    }
+    .brand strong { display:block; line-height:1.1; }
+    .brand span span { display:block; margin-top:2px; color:var(--muted); font:11px var(--mono); }
+    .nav-links { display:flex; align-items:center; gap:4px; color:var(--muted); font:12px var(--mono); }
+    .nav-links a, .nav-links button, .mobile-panel a, .mobile-panel button {
+      border:0; border-radius:999px; background:transparent; color:inherit; cursor:pointer;
+      padding:10px 12px;
+    }
+    .nav-links a:hover, .nav-links button:hover, .mobile-panel a:hover, .mobile-panel button:hover { background:rgba(25,29,36,.06); color:var(--ink); }
+    .nav-links a.current, .mobile-panel a.current { background:var(--ink); color:var(--surface); }
+    .nav-cta, .solid { background:var(--ink)!important; color:var(--surface)!important; }
+    .menu-button {
+      display:none; min-height:42px; border:1px solid var(--line-strong); border-radius:999px;
+      padding:0 13px; background:transparent; color:var(--ink); cursor:pointer; font:12px var(--mono);
+    }
+    .mobile-panel { display:none; border-top:1px solid var(--line); padding:10px 0 16px; font:13px var(--mono); }
+    .mobile-panel[aria-hidden="false"] { display:block; }
+    .mobile-panel .wrap { display:grid; gap:6px; }
+    .mobile-panel a, .mobile-panel button { width:100%; min-height:44px; display:flex; align-items:center; justify-content:space-between; border-radius:12px; }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    main { display:block; }
+    section { padding:70px 0; scroll-margin-top:86px; border-bottom:1px solid rgba(217,209,194,.72); }
+    .hero { padding:86px 0 74px; }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,430px); gap:54px; align-items:end; }
+    .kicker, .section-label, .eyebrow, .tag, .metric span, .case-meta, footer { font-family:var(--mono); }
+    .kicker { display:flex; flex-wrap:wrap; gap:10px 16px; margin-bottom:24px; color:var(--muted); font-size:12px; }
+    h1, h2, h3, p { overflow-wrap:anywhere; }
+    h1 {
+      margin:0; max-width:760px; font-size:clamp(44px, 8vw, 88px);
+      line-height:.96; letter-spacing:0; font-weight:700;
+    }
+    .hero-copy { margin:26px 0 0; max-width:700px; color:var(--muted); font-size:clamp(18px,2.2vw,22px); line-height:1.45; }
+    .actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:30px; }
+    .btn {
+      min-height:46px; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:0 16px; border:1px solid var(--ink); border-radius:999px; background:transparent;
+      color:var(--ink); cursor:pointer; font-weight:500;
+      transition:transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+    }
+    .btn.primary { background:var(--ink); color:var(--surface); }
+    .btn:hover { background:var(--ink); color:var(--surface); transform:translateY(-2px); box-shadow:0 12px 28px rgba(32,28,24,.13); }
+    .profile-card {
+      border:1px solid var(--line); border-radius:16px; background:var(--surface);
+      padding:20px; box-shadow:0 18px 46px rgba(32,28,24,.07);
+    }
+    .profile-card p { margin:10px 0 0; color:var(--muted); }
+    .metrics { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
+    .metric { padding:13px; border:1px solid var(--line); border-radius:12px; background:var(--paper); }
+    .metric strong { display:block; font-size:20px; line-height:1; }
+    .metric span { display:block; margin-top:6px; color:var(--muted); font-size:11px; line-height:1.3; }
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      body {
-        font-family: "Inter", sans-serif;
-        margin: 0;
-        overflow-x: hidden;
+    .ops-card {
+      position:relative; overflow:hidden; min-height:360px; border:1px solid var(--line);
+      border-radius:20px; background:var(--ink); color:var(--surface);
+      box-shadow:0 24px 70px rgba(32,28,24,.16);
+      isolation:isolate;
+      transform-style:preserve-3d;
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .ops-card.is-tilting { box-shadow:0 28px 80px rgba(32,28,24,.22); }
+    .ops-card::before {
+      content:""; position:absolute; inset:-1px; z-index:-1;
+      background:
+        radial-gradient(circle at 22% 16%, rgba(185,101,67,.42), transparent 34%),
+        radial-gradient(circle at 78% 12%, rgba(47,114,133,.42), transparent 30%),
+        linear-gradient(135deg, #191d24 0%, #123f4c 52%, #191d24 100%);
+    }
+    .ops-card::after {
+      content:""; position:absolute; inset:0; z-index:-1; opacity:.24;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px) 0 0/44px 44px,
+        linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px) 0 0/44px 44px;
+      mask-image:linear-gradient(to bottom, #000, transparent 92%);
+    }
+    .ops-glow {
+      position:absolute; width:210px; height:210px; border-radius:50%;
+      left:calc(var(--mx, 50%) - 105px); top:calc(var(--my, 50%) - 105px);
+      background:radial-gradient(circle, rgba(255,253,248,.18), transparent 68%);
+      opacity:.8; pointer-events:none; transition:opacity .18s ease;
+    }
+    .ops-scan {
+      position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(180deg, transparent 0%, rgba(255,253,248,.12) 48%, transparent 56%);
+      transform:translateY(-100%);
+      animation:scan 5.5s ease-in-out infinite;
+      opacity:.6;
+    }
+    .ops-top { display:flex; justify-content:space-between; gap:14px; padding:20px 20px 0; color:rgba(255,253,248,.72); font:11px var(--mono); }
+    .status-pill { display:inline-flex; align-items:center; gap:7px; white-space:nowrap; }
+    .status-pill::before {
+      content:""; width:8px; height:8px; border-radius:50%; background:#76e0b8;
+      box-shadow:0 0 0 0 rgba(118,224,184,.52); animation:pulse 2s infinite;
+    }
+    .ops-core { position:relative; min-height:250px; margin:22px 18px 0; }
+    .flow-node {
+      position:absolute; width:min(42%,170px); min-height:74px; padding:14px;
+      border:1px solid rgba(255,253,248,.18); border-radius:16px;
+      background:rgba(255,253,248,.10); backdrop-filter:blur(10px);
+    }
+    .flow-node strong { display:block; font-size:18px; line-height:1.05; }
+    .flow-node span { display:block; margin-top:6px; color:rgba(255,253,248,.66); font-size:12px; line-height:1.35; }
+    .flow-node.crm { left:0; top:22px; }
+    .flow-node.auto { right:0; top:78px; background:rgba(255,253,248,.16); }
+    .flow-node.bi { left:18%; bottom:18px; }
+    .flow-line {
+      position:absolute; left:26%; right:24%; top:112px; height:2px;
+      background:linear-gradient(90deg, transparent, rgba(255,253,248,.7), transparent);
+      transform:rotate(10deg);
+    }
+    .flow-line::after {
+      content:""; position:absolute; top:50%; left:0; width:10px; height:10px; border-radius:50%;
+      background:#fffdf8; transform:translateY(-50%);
+      animation:travel 3.4s ease-in-out infinite;
+    }
+    .ops-feed {
+      display:grid; gap:8px; padding:0 18px 18px;
+      font:12px var(--mono); color:rgba(255,253,248,.72);
+    }
+    .feed-row {
+      display:grid; grid-template-columns:72px 1fr auto; gap:8px; align-items:center;
+      padding:9px 10px; border:1px solid rgba(255,253,248,.14); border-radius:12px;
+      background:rgba(0,0,0,.16);
+      transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .feed-row.is-live { transform:translateX(4px); background:rgba(255,253,248,.13); border-color:rgba(118,224,184,.38); }
+    .feed-row strong { color:var(--surface); font-weight:500; }
+    .feed-row span:last-child { color:#76e0b8; }
+
+    @keyframes pulse {
+      70% { box-shadow:0 0 0 12px rgba(118,224,184,0); }
+      100% { box-shadow:0 0 0 0 rgba(118,224,184,0); }
+    }
+    @keyframes travel {
+      0%, 12% { left:0; opacity:0; }
+      22% { opacity:1; }
+      82% { opacity:1; }
+      100% { left:100%; opacity:0; }
+    }
+    @keyframes scan {
+      0%, 58% { transform:translateY(-100%); }
+      74%, 100% { transform:translateY(100%); }
+    }
+    @keyframes rise {
+      from { opacity:0; transform:translateY(12px); }
+      to { opacity:1; transform:none; }
+    }
+
+    .section-head {
+      display:grid; grid-template-columns:190px minmax(0,1fr); gap:34px; margin-bottom:30px;
+    }
+    .section-label { padding-top:9px; color:var(--clay); font-size:12px; }
+    h2 { margin:0; max-width:780px; font-size:clamp(30px,4vw,52px); line-height:1.02; letter-spacing:0; }
+    .section-copy { margin:16px 0 0; max-width:760px; color:var(--muted); font-size:18px; }
+
+    .service-list { border-top:1px solid var(--ink); }
+    .service {
+      display:grid; grid-template-columns:190px minmax(0,1fr) 250px; gap:28px;
+      padding:28px 0; border-bottom:1px solid var(--line); align-items:start;
+    }
+    .service, .case-card, .stack-item, .timeline-item { animation:rise .55s cubic-bezier(.2,.7,.2,1) both; }
+    .service:nth-child(2), .case-card:nth-child(2), .stack-item:nth-child(2), .timeline-item:nth-child(2) { animation-delay:.06s; }
+    .service:nth-child(3), .case-card:nth-child(3), .stack-item:nth-child(3), .timeline-item:nth-child(3) { animation-delay:.12s; }
+    .stack-item:nth-child(4) { animation-delay:.18s; }
+    .service-num { color:var(--clay); font:12px var(--mono); }
+    .service h3 { margin:0 0 8px; font-size:25px; line-height:1.1; letter-spacing:0; }
+    .service p { margin:0; color:var(--muted); }
+    .mini-list { margin:0; padding:0; list-style:none; display:grid; gap:8px; color:var(--muted); font-size:14px; }
+    .mini-list li { padding-left:16px; position:relative; }
+    .mini-list li::before { content:""; position:absolute; left:0; top:.72em; width:6px; height:6px; border-radius:50%; background:var(--teal); }
+
+    .case-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .case-card {
+      min-width:0; border:1px solid var(--line); border-radius:16px; background:var(--surface);
+      padding:20px; display:grid; gap:16px; box-shadow:0 18px 46px rgba(32,28,24,.06);
+    }
+    .case-meta { display:flex; justify-content:space-between; gap:12px; color:var(--muted); font-size:11px; }
+    .case-card h3 { margin:0; font-size:23px; line-height:1.12; letter-spacing:0; }
+    .case-card p { margin:0; color:var(--muted); }
+    .case-card { cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease; }
+    .case-card:hover, .case-card.active { transform:translateY(-3px); border-color:var(--ink); box-shadow:0 22px 54px rgba(32,28,24,.10); background:#fffefa; }
+    .case-card:focus-visible { outline:3px solid rgba(22,79,95,.22); outline-offset:4px; }
+    .case-insight {
+      margin-top:14px; display:grid; grid-template-columns:180px minmax(0,1fr) auto; gap:18px; align-items:center;
+      padding:16px 18px; border:1px solid var(--line); border-radius:16px; background:var(--ink); color:var(--surface);
+      box-shadow:0 18px 46px rgba(32,28,24,.08);
+    }
+    .case-insight span { color:rgba(255,253,248,.62); font:11px var(--mono); }
+    .case-insight strong { display:block; font-size:18px; line-height:1.2; }
+    .case-insight p { margin:0; color:rgba(255,253,248,.74); }
+    .case-insight i { width:10px; height:10px; border-radius:50%; background:#76e0b8; box-shadow:0 0 0 8px rgba(118,224,184,.12); }
+    .case-points { margin:0; padding:0; list-style:none; display:grid; gap:8px; }
+    .case-points li { padding:10px 11px; border:1px solid var(--line); border-radius:11px; background:var(--paper); color:var(--ink); }
+    .case-note { padding-top:12px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+
+    .stack-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid var(--ink); border-left:1px solid var(--line); }
+    .stack-item { padding:20px; min-height:150px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); background:rgba(255,253,248,.38); }
+    .stack-item { transition:background .18s ease, transform .18s ease; }
+    .stack-item:hover { background:var(--surface); transform:translateY(-2px); }
+    .stack-item h3 { margin:0 0 10px; font-size:18px; letter-spacing:0; }
+    .stack-item p { margin:0; color:var(--muted); font-size:14px; }
+
+    .timeline { border-top:1px solid var(--ink); }
+    .timeline-item { display:grid; grid-template-columns:190px minmax(0,1fr); gap:28px; padding:24px 0; border-bottom:1px solid var(--line); }
+    .timeline-date { color:var(--muted); font:12px var(--mono); padding-top:5px; }
+    .timeline-item h3 { margin:0 0 6px; font-size:23px; letter-spacing:0; }
+    .timeline-item p { margin:0; color:var(--muted); max-width:760px; }
+    .tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:12px; }
+    .tag { padding:5px 9px; border:1px solid var(--line-strong); border-radius:999px; color:var(--muted); background:rgba(255,253,248,.4); font-size:11px; }
+
+    .contact-box {
+      display:grid; grid-template-columns:minmax(0,1fr) 330px; gap:34px; align-items:start;
+      border-radius:20px; background:var(--ink); color:var(--surface); padding:34px;
+    }
+    .contact-box h2 { color:var(--surface); }
+    .contact-box .section-copy { color:rgba(255,253,248,.74); }
+    .contact-links { display:grid; gap:10px; }
+    .contact-link {
+      min-height:72px; padding:15px; border:1px solid rgba(255,255,255,.18); border-radius:13px;
+      background:rgba(255,255,255,.07); display:flex; flex-direction:column; justify-content:center; color:inherit;
+    }
+    .contact-link span { color:rgba(255,253,248,.62); font:11px var(--mono); }
+    .contact-link strong { margin-top:3px; overflow-wrap:anywhere; }
+    .contact-link:hover { background:rgba(255,255,255,.12); }
+    .reveal { opacity:0; transform:translateY(18px); transition:opacity .58s cubic-bezier(.2,.7,.2,1), transform .58s cubic-bezier(.2,.7,.2,1); transition-delay:var(--d,0s); }
+    .reveal.in { opacity:1; transform:none; }
+
+    footer { padding:28px 0 34px; color:var(--muted); font-size:11px; }
+    .footer-grid { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+
+    .modal {
+      position:fixed; inset:0; z-index:80; display:none; align-items:center; justify-content:center;
+      padding:18px; background:rgba(25,29,36,.52); backdrop-filter:blur(10px);
+    }
+    .modal.open { display:flex; }
+    .dialog {
+      width:min(560px,100%); max-height:min(92vh,720px); overflow:auto;
+      border:1px solid var(--line); border-radius:18px; background:var(--surface); color:var(--ink);
+      padding:22px; box-shadow:0 18px 55px rgba(0,0,0,.22);
+    }
+    .dialog-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:16px; }
+    .dialog h3 { margin:0 0 8px; font-size:24px; letter-spacing:0; }
+    .dialog p { margin:0; color:var(--muted); }
+    .close { width:38px; height:38px; border-radius:50%; border:1px solid var(--line-strong); background:transparent; cursor:pointer; }
+    .resume-preview { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:16px 0; }
+    .resume-preview div { padding:11px; border:1px solid var(--line); border-radius:12px; background:var(--paper); }
+    .resume-preview strong { display:block; margin-bottom:4px; font-size:13px; }
+    .resume-preview span { display:block; color:var(--muted); font-size:12.5px; line-height:1.35; }
+    .form { display:grid; gap:13px; }
+    .field { display:grid; gap:7px; }
+    label { color:var(--ink); font:12px var(--mono); }
+    input[type="email"], input[type="text"] {
+      width:100%; min-height:48px; padding:0 13px; border:1px solid var(--line-strong); border-radius:12px;
+      background:var(--paper); color:var(--ink); outline:none;
+    }
+    input:focus, button:focus-visible, a:focus-visible { outline:3px solid rgba(22,79,95,.22); outline-offset:3px; }
+    .honeypot { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; pointer-events:none; }
+    .check { display:flex; gap:10px; align-items:flex-start; padding:12px; border:1px solid var(--line); border-radius:12px; background:var(--paper); color:var(--muted); font-size:14px; }
+    .check input { margin-top:3px; accent-color:var(--teal); }
+    .feedback { min-height:21px; color:var(--muted); font-size:13px; }
+    .feedback.error { color:var(--error); }
+    .feedback.ok { color:var(--ok); font-weight:600; }
+
+    @media (max-width:900px) {
+      .hero-grid, .section-head, .service, .timeline-item, .contact-box { grid-template-columns:1fr; gap:20px; }
+      .profile-card { max-width:520px; }
+      .ops-card { max-width:560px; }
+      .case-grid { grid-template-columns:1fr; }
+      .stack-grid { grid-template-columns:1fr 1fr; }
+      .service { padding:24px 0; }
+    }
+
+    @media (max-width:720px) {
+      .wrap { width:calc(100% - 28px); }
+      .nav-links { display:none; }
+      .menu-button { display:inline-block; }
+      .brand span span { display:none; }
+      section { padding:54px 0; }
+      .hero { padding:58px 0 56px; }
+      h1 { font-size:clamp(40px, 12vw, 58px); }
+      .hero-copy, .section-copy { font-size:17px; }
+      .actions, .btn { width:100%; }
+      .btn { min-height:48px; }
+      .metrics, .stack-grid, .resume-preview { grid-template-columns:1fr; }
+      .ops-card { min-height:340px; }
+      .flow-node { width:58%; min-height:68px; }
+      .flow-node.crm { left:0; top:18px; }
+      .flow-node.auto { right:0; top:104px; }
+      .flow-node.bi { left:0; bottom:10px; }
+      .flow-line { left:24%; right:14%; top:126px; transform:rotate(16deg); }
+      .feed-row { grid-template-columns:1fr; gap:2px; }
+      .case-insight { grid-template-columns:1fr; }
+      .contact-box { padding:24px; border-radius:16px; }
+      .case-card, .profile-card { border-radius:14px; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      *, *::before, *::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; }
+      .reveal { opacity:1; transform:none; }
+    }
+
+    @media print {
+      .topbar, .actions, .modal, .contact-links { display:none!important; }
+      body { background:#fff; }
+      section, .hero { padding:26px 0; }
+      .wrap { width:100%; max-width:none; padding:0 20px; }
+      .profile-card, .case-card, .contact-box { box-shadow:none; break-inside:avoid; }
+      .contact-box { background:#fff; color:#111; border:1px solid #ddd; }
+      .contact-box h2, .contact-box .section-copy { color:#111; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="Jean Carlos - início">
+        <span class="mark">JC</span>
+        <span><strong>Jean Carlos</strong><span>RevOps · CRM · Automação</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#servicos" data-nav-link>Atuação</a>
+        <a href="#exemplos" data-nav-link>Exemplos</a>
+        <a href="#stack" data-nav-link>Stack</a>
+        <a href="#experiencia" data-nav-link>Experiência</a>
+        <a href="#contato" data-nav-link>Contato</a>
+        <button class="nav-cta" type="button" data-open-resume>Currículo</button>
+      </nav>
+      <button class="menu-button" type="button" id="menuButton" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </div>
+    <div class="mobile-panel" id="mobileMenu" aria-hidden="true">
+      <div class="wrap">
+        <a href="#servicos" data-nav-link>Atuação <span>01</span></a>
+        <a href="#exemplos" data-nav-link>Exemplos <span>02</span></a>
+        <a href="#stack" data-nav-link>Stack <span>03</span></a>
+        <a href="#experiencia" data-nav-link>Experiência <span>04</span></a>
+        <a href="#contato" data-nav-link>Contato <span>05</span></a>
+        <button class="solid" type="button" data-open-resume>Baixar currículo</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker"><span>São José dos Campos, SP</span><span>Operações comerciais</span><span>Dados e sistemas internos</span></div>
+          <h1>RevOps, CRM e automação para operações mais claras.</h1>
+          <p class="hero-copy">Eu ajudo times a organizar processos, dados e rotinas: menos planilha paralela, menos trabalho manual e mais visibilidade para decidir.</p>
+          <div class="actions">
+            <a class="btn primary" href="#contato">Falar comigo</a>
+            <button class="btn" type="button" data-open-resume>Baixar currículo</button>
+            <a class="btn" href="https://github.com/jeancsla" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <aside class="ops-card" aria-label="Painel visual de operação automatizada">
+          <div class="ops-glow" aria-hidden="true"></div>
+          <div class="ops-scan" aria-hidden="true"></div>
+          <div class="ops-top">
+            <span>OPERATION LAYER</span>
+            <span class="status-pill">live workflow</span>
+          </div>
+          <div class="ops-core" aria-hidden="true">
+            <div class="flow-node crm"><strong>CRM</strong><span>etapas, owner, próxima ação</span></div>
+            <div class="flow-line"></div>
+            <div class="flow-node auto"><strong>Automação</strong><span>validação, regra, alerta</span></div>
+            <div class="flow-node bi"><strong>Dados</strong><span>snapshot, KPI, decisão</span></div>
+          </div>
+          <div class="ops-feed">
+            <div class="feed-row"><span>09:12</span><strong>Novo lead qualificado</strong><span>synced</span></div>
+            <div class="feed-row"><span>09:14</span><strong>Regra de handoff aplicada</strong><span>ok</span></div>
+            <div class="feed-row"><span>09:18</span><strong>Dashboard atualizado</strong><span>ready</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="servicos">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">01 / ATUAÇÃO</div>
+          <div>
+            <h2>O que eu faço.</h2>
+            <p class="section-copy">Quatro frentes principais, sem excesso de vitrine: estruturar, automatizar, medir e manter.</p>
+          </div>
+        </div>
+        <div class="service-list">
+          <article class="service">
+            <div class="service-num">01</div>
+            <div>
+              <h3>CRM e RevOps</h3>
+              <p>Organização de funis, propriedades, etapas, regras de preenchimento, handoff e governança.</p>
+            </div>
+            <ul class="mini-list">
+              <li>Pipeline mais legível</li>
+              <li>Menos exceções manuais</li>
+              <li>Rotina de acompanhamento</li>
+            </ul>
+          </article>
+          <article class="service">
+            <div class="service-num">02</div>
+            <div>
+              <h3>Automação operacional</h3>
+              <p>Fluxos com n8n, Apps Script, APIs e webhooks para reduzir tarefas repetitivas e melhorar rastreabilidade.</p>
+            </div>
+            <ul class="mini-list">
+              <li>Entrada padronizada</li>
+              <li>Regras explícitas</li>
+              <li>Alertas e registros</li>
+            </ul>
+          </article>
+          <article class="service">
+            <div class="service-num">03</div>
+            <div>
+              <h3>Dados e dashboards</h3>
+              <p>Modelagem simples, snapshots, indicadores e painéis para leitura de funil, carteira, receita e operação.</p>
+            </div>
+            <ul class="mini-list">
+              <li>KPIs definidos</li>
+              <li>Base auditável</li>
+              <li>Leitura executiva</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="exemplos">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">02 / EXEMPLOS</div>
+          <div>
+            <h2>Cases mockados, por enquanto.</h2>
+            <p class="section-copy">Como ainda não há muito repertório público para expor, estes cards mostram tipos de entrega sem revelar dados reais.</p>
+          </div>
+        </div>
+        <div class="case-grid">
+          <article class="case-card active" tabindex="0" role="button" aria-pressed="true" data-case="crm">
+            <div class="case-meta"><span>CRM</span><span>MOCK</span></div>
+            <h3>Governança de pipeline</h3>
+            <p>Revisão de etapas, campos obrigatórios, motivos de perda e critérios de avanço.</p>
+            <ul class="case-points">
+              <li>Problema: pipeline pouco confiável.</li>
+              <li>Entrega: playbook, regras e visão de qualidade.</li>
+              <li>Impacto esperado: menos retrabalho e melhor forecast.</li>
+            </ul>
+            <div class="case-note">Substituir por resultado real quando houver autorização.</div>
+          </article>
+          <article class="case-card" tabindex="0" role="button" aria-pressed="false" data-case="automation">
+            <div class="case-meta"><span>AUTOMAÇÃO</span><span>MOCK</span></div>
+            <h3>Fluxos internos</h3>
+            <p>Automação de entradas, validações, atualizações e alertas entre ferramentas.</p>
+            <ul class="case-points">
+              <li>Problema: informações sem padrão.</li>
+              <li>Entrega: webhook, regra, log e exceção documentada.</li>
+              <li>Impacto esperado: menos conferência manual.</li>
+            </ul>
+            <div class="case-note">Exemplo seguro para mostrar método sem expor operação.</div>
+          </article>
+          <article class="case-card" tabindex="0" role="button" aria-pressed="false" data-case="bi">
+            <div class="case-meta"><span>BI</span><span>MOCK</span></div>
+            <h3>Dashboards fora do CRM</h3>
+            <p>Base consolidada, métricas padronizadas e painel para acompanhamento recorrente.</p>
+            <ul class="case-points">
+              <li>Problema: indicadores espalhados.</li>
+              <li>Entrega: base, dicionário de métricas e painel.</li>
+              <li>Impacto esperado: leitura única para gestão.</li>
+            </ul>
+            <div class="case-note">Trocar por antes/depois real em uma próxima versão.</div>
+          </article>
+        </div>
+        <div class="case-insight" id="caseInsight" aria-live="polite">
+          <div><span>LEITURA RÁPIDA</span><strong>CRM confiável antes do dashboard</strong></div>
+          <p>O ponto forte é reduzir ambiguidade no funil: etapa, owner, critério de avanço e próxima ação precisam sustentar a rotina.</p>
+          <i aria-hidden="true"></i>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">03 / STACK</div>
+          <div>
+            <h2>Ferramentas que aparecem no trabalho.</h2>
+            <p class="section-copy">A ferramenta é meio. O objetivo é deixar a rotina mais simples de executar, auditar e melhorar.</p>
+          </div>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-item"><h3>CRM</h3><p>HubSpot, Zoho, RD Station, propriedades, pipelines e automações.</p></div>
+          <div class="stack-item"><h3>Automação</h3><p>n8n, Google Apps Script, APIs, webhooks e rotinas agendadas.</p></div>
+          <div class="stack-item"><h3>Dados</h3><p>Google Sheets, SQL, Looker Studio, snapshots e indicadores.</p></div>
+          <div class="stack-item"><h3>Operação</h3><p>Playbooks, documentação, SLA, handoff e comunicação de mudanças.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label">04 / EXPERIÊNCIA</div>
+          <div>
+            <h2>Trajetória resumida.</h2>
+            <p class="section-copy">Um recorte direto do que sustenta o posicionamento do site.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">ATUAL</div>
+            <div>
+              <h3>RevOps, Customer Success e automações</h3>
+              <p>Rotinas de CRM, acompanhamento de clientes, relatórios, automações e melhoria de processos.</p>
+              <div class="tags"><span class="tag">RevOps</span><span class="tag">CS Ops</span><span class="tag">HubSpot</span><span class="tag">Automação</span></div>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div>
+              <h3>CRM Analyst Pleno</h3>
+              <p>Administração de CRM, segmentações, tratamento de base, automações e comunicação de mudanças.</p>
+              <div class="tags"><span class="tag">CRM</span><span class="tag">Marketing Ops</span><span class="tag">Governança</span></div>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date">2022 - 2024</div>
+            <div>
+              <h3>Revenue Operations Analyst</h3>
+              <p>Processos comerciais, funil, KPIs, forecast, dashboards e interface entre áreas.</p>
+              <div class="tags"><span class="tag">Pipeline</span><span class="tag">Forecast</span><span class="tag">Dashboards</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="wrap">
+        <div class="contact-box">
+          <div>
+            <div class="section-label">05 / CONTATO</div>
+            <h2>Para projetos, oportunidades ou conversas sobre operação e tecnologia.</h2>
+            <p class="section-copy">Melhor caminho: trazer o contexto do problema, ferramenta atual, volume de operação e decisão que precisa ficar mais clara.</p>
+          </div>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:jeancsla@gmail.com?subject=Contato%20pelo%20site%20pessoal"><span>E-MAIL</span><strong>jeancsla@gmail.com</strong></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/jeancsla" target="_blank" rel="noopener noreferrer"><span>LINKEDIN</span><strong>linkedin.com/in/jeancsla</strong></a>
+            <a class="contact-link" href="https://github.com/jeancsla" target="_blank" rel="noopener noreferrer"><span>GITHUB</span><strong>github.com/jeancsla</strong></a>
+            <button class="contact-link" type="button" data-open-resume><span>CURRÍCULO</span><strong>Validar e baixar</strong></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <span>© <span id="year"></span> Jean Carlos</span>
+      <span>Arquivo único · HTML, CSS e JavaScript</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="dialog">
+      <div class="dialog-head">
+        <div>
+          <h3 id="modalTitle">Baixar currículo</h3>
+          <p id="modalDesc">Validação local simples. Nenhum dado é enviado para servidor nesta versão estática.</p>
+        </div>
+        <button class="close" type="button" data-close-modal aria-label="Fechar modal">×</button>
+      </div>
+      <div class="resume-preview" aria-label="Resumo do currículo">
+        <div><strong>Resumo</strong><span>RevOps, CRM, automação e dados.</span></div>
+        <div><strong>Stack</strong><span>HubSpot, n8n, Apps Script, APIs e BI.</span></div>
+        <div><strong>Experiência</strong><span>Operações comerciais, CS e Marketing Ops.</span></div>
+        <div><strong>Formato</strong><span>HTML imprimível para salvar como PDF.</span></div>
+      </div>
+      <form class="form" id="resumeForm" novalidate>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="nome@empresa.com">
+        </div>
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <label class="check" for="human"><input id="human" type="checkbox" required><span>Confirmo que quero baixar o currículo e entendo que a validação é local.</span></label>
+        <div class="feedback" id="feedback" aria-live="polite"></div>
+        <div class="actions" style="margin-top:0">
+          <button class="btn primary" type="submit">Validar e baixar</button>
+          <button class="btn" type="button" data-close-modal>Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+  (() => {
+    "use strict";
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const modal = document.getElementById("resumeModal");
+    const form = document.getElementById("resumeForm");
+    const emailInput = document.getElementById("email");
+    const honeypot = document.getElementById("website");
+    const human = document.getElementById("human");
+    const feedback = document.getElementById("feedback");
+    const scrollProgress = document.getElementById("scrollProgress");
+    const opsCard = document.querySelector(".ops-card");
+    const caseInsight = document.getElementById("caseInsight");
+    const blockedDomains = new Set(["10minutemail.com","tempmail.com","temp-mail.org","mailinator.com","guerrillamail.com","yopmail.com","trashmail.com","discard.email"]);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let openedAt = 0;
+    let lastFocusedElement = null;
+
+    const caseCopy = {
+      crm: {
+        title:"CRM confiável antes do dashboard",
+        text:"O ponto forte é reduzir ambiguidade no funil: etapa, owner, critério de avanço e próxima ação precisam sustentar a rotina."
+      },
+      automation: {
+        title:"Automação que deixa rastro",
+        text:"O ganho vem de padronizar entrada, explicitar regra e registrar exceção. O fluxo precisa ajudar a operação, não virar caixa-preta."
+      },
+      bi: {
+        title:"Dados com uma leitura comum",
+        text:"O painel só funciona quando métrica, origem, atualização e dono do indicador estão claros para quem usa a informação."
       }
-      .glass {
-        backdrop-filter: blur(12px) saturate(180%);
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.1) 0%,
-          rgba(255, 255, 255, 0.05) 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        box-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.15),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .glass:hover {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.12) 0%,
-          rgba(255, 255, 255, 0.06) 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        box-shadow:
-          0 12px 48px rgba(0, 0, 0, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.35);
-        transform: translateY(-4px);
-      }
-      .glass-dark {
-        backdrop-filter: blur(12px) saturate(180%);
-        background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.25) 0%,
-          rgba(0, 0, 0, 0.15) 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        box-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .glass-dark:hover {
-        background: linear-gradient(
-          135deg,
-          rgba(0, 0, 0, 0.35) 0%,
-          rgba(0, 0, 0, 0.25) 100%
-        );
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        box-shadow:
-          0 12px 48px rgba(0, 0, 0, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.25);
-        transform: translateY(-2px);
-      }
-      .animate-fade-in {
-        animation: fadeIn 0.5s ease-out forwards;
-      }
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
+    };
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function updateScrollProgress() {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? window.scrollY / max : 0;
+      scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, progress))})`;
+    }
+
+    function updateActiveNav(id) {
+      document.querySelectorAll("[data-nav-link]").forEach(link => {
+        link.classList.toggle("current", link.getAttribute("href") === "#" + id);
+      });
+    }
+
+    const resumeDocument = `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Currículo - Jean Carlos</title>
+  <style>
+    *{box-sizing:border-box} body{margin:0;background:#f6f3ed;color:#191d24;font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+    main{max-width:920px;margin:40px auto;padding:34px;background:#fffdf8;border:1px solid #d9d1c2}
+    header{display:grid;grid-template-columns:1fr auto;gap:20px;border-bottom:2px solid #191d24;padding-bottom:22px;margin-bottom:24px}
+    h1{margin:0;font-size:42px;line-height:1} h2{margin:28px 0 10px;font-size:18px;text-transform:uppercase;border-bottom:1px solid #d9d1c2;padding-bottom:8px}
+    h3{margin:16px 0 4px;font-size:17px} p{margin:0 0 10px}.muted{color:#687385}.contact{text-align:right;color:#687385;font-size:14px}
+    button{margin:0 0 18px;padding:10px 14px;border:1px solid #191d24;border-radius:999px;background:#191d24;color:#fffdf8;cursor:pointer}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.box{padding:14px;border:1px solid #d9d1c2;background:#f6f3ed}
+    ul{margin:8px 0 0;padding-left:20px}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tag{padding:4px 8px;border:1px solid #d9d1c2;border-radius:999px;color:#687385;font-size:12px}
+    @media print{body{background:#fff}main{margin:0;border:0;padding:0}button{display:none}} @media(max-width:720px){main{margin:0;border:0}.grid,header{grid-template-columns:1fr}.contact{text-align:left}h1{font-size:34px}}
+  </style>
+</head>
+<body>
+  <main>
+    <button onclick="window.print()">Imprimir / salvar como PDF</button>
+    <header>
+      <div><h1>Jean Carlos</h1><p class="muted">RevOps, CRM, Automação, Dados e Sistemas Internos - São José dos Campos, SP</p></div>
+      <div class="contact"><p>jeancsla@gmail.com</p><p>github.com/jeancsla</p><p>linkedin.com/in/jeancsla</p></div>
+    </header>
+    <h2>Resumo</h2>
+    <p>Profissional com atuação entre Revenue Operations, CRM, automações, dados e tecnologia. Experiência em estruturação de processos comerciais, administração de CRM, dashboards, integrações e governança operacional.</p>
+    <div class="grid"><div class="box"><strong>Foco</strong><p class="muted">CRM Ops, RevOps, CS Ops, Marketing Ops e melhoria de rotinas internas.</p></div><div class="box"><strong>Stack</strong><p class="muted">HubSpot, Zoho, Google Sheets, Apps Script, n8n, APIs, SQL e BI.</p></div></div>
+    <h2>Competências</h2>
+    <div class="tags"><span class="tag">RevOps</span><span class="tag">CRM Ops</span><span class="tag">HubSpot</span><span class="tag">n8n</span><span class="tag">Apps Script</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">BI</span><span class="tag">Governança</span></div>
+    <h2>Experiência</h2>
+    <h3>RevOps, Customer Success e automações - Atual</h3><ul><li>Rotinas de CRM, acompanhamento de clientes, relatórios e automações operacionais.</li><li>Integração entre ferramentas, bases em Sheets, n8n, Apps Script e APIs.</li></ul>
+    <h3>CRM Analyst Pleno - 2025</h3><ul><li>Administração de CRM, segmentações, tratamento de base, automações e comunicação de mudanças.</li></ul>
+    <h3>Revenue Operations Analyst - 2022 a 2024</h3><ul><li>Processos comerciais, funis, KPIs, dashboards, forecast e rotinas de CRM.</li></ul>
+    <h2>Formação</h2><p><strong>Engenharia Mecânica - IFSP</strong></p>
+  </main>
+</body>
+</html>`;
+
+    function setMenu(open) {
+      menuButton.setAttribute("aria-expanded", String(open));
+      mobileMenu.setAttribute("aria-hidden", String(!open));
+    }
+
+    function setCase(key) {
+      const item = caseCopy[key];
+      if (!item) return;
+      document.querySelectorAll("[data-case]").forEach(card => {
+        const active = card.dataset.case === key;
+        card.classList.toggle("active", active);
+        card.setAttribute("aria-pressed", String(active));
+      });
+      caseInsight.innerHTML = `<div><span>LEITURA RÁPIDA</span><strong>${item.title}</strong></div><p>${item.text}</p><i aria-hidden="true"></i>`;
+    }
+
+    function openModal() {
+      lastFocusedElement = document.activeElement;
+      openedAt = Date.now();
+      modal.classList.add("open");
+      document.body.classList.add("no-scroll");
+      feedback.textContent = "";
+      feedback.className = "feedback";
+      setTimeout(() => emailInput.focus(), 60);
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.classList.remove("no-scroll");
+      if (lastFocusedElement && typeof lastFocusedElement.focus === "function") setTimeout(() => lastFocusedElement.focus(), 60);
+    }
+
+    function validEmail(email) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return false;
+      if (email.length > 160 || email.includes("..")) return false;
+      const domain = email.split("@")[1];
+      return !!domain && !blockedDomains.has(domain);
+    }
+
+    function setFeedback(message, status) {
+      feedback.textContent = message;
+      feedback.className = "feedback" + (status ? " " + status : "");
+    }
+
+    function downloadResume() {
+      const blob = new Blob([resumeDocument], { type:"text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "curriculo-jean-carlos.html";
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => { URL.revokeObjectURL(url); link.remove(); }, 500);
+    }
+
+    menuButton.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
+    document.querySelectorAll(".mobile-panel a").forEach(link => link.addEventListener("click", () => setMenu(false)));
+    document.querySelectorAll("[data-open-resume]").forEach(el => el.addEventListener("click", openModal));
+    document.querySelectorAll("[data-close-modal]").forEach(el => el.addEventListener("click", closeModal));
+    modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+
+    updateScrollProgress();
+    window.addEventListener("scroll", updateScrollProgress, { passive:true });
+    window.addEventListener("resize", updateScrollProgress);
+
+    document.querySelectorAll(".section-head, .service, .case-card, .case-insight, .stack-item, .timeline-item, .contact-box").forEach((el, index) => {
+      el.classList.add("reveal");
+      el.style.setProperty("--d", `${Math.min(index % 4, 3) * 0.04}s`);
+    });
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold:.12, rootMargin:"0px 0px -8% 0px" });
+      document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) updateActiveNav(entry.target.id);
+        });
+      }, { threshold:.28, rootMargin:"-20% 0px -58% 0px" });
+      document.querySelectorAll("main section[id]").forEach(section => sectionObserver.observe(section));
+    } else {
+      document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+    }
+
+    document.querySelectorAll("[data-case]").forEach(card => {
+      card.addEventListener("click", () => setCase(card.dataset.case));
+      card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          setCase(card.dataset.case);
         }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      });
+    });
+
+    if (opsCard && !reduceMotion) {
+      opsCard.addEventListener("pointermove", event => {
+        const rect = opsCard.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        opsCard.style.setProperty("--mx", `${x * 100}%`);
+        opsCard.style.setProperty("--my", `${y * 100}%`);
+        opsCard.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 5}deg) rotateY(${(x - 0.5) * 7}deg)`;
+        opsCard.classList.add("is-tilting");
+      });
+      opsCard.addEventListener("pointerleave", () => {
+        opsCard.style.transform = "";
+        opsCard.classList.remove("is-tilting");
+      });
+
+      const rows = [...document.querySelectorAll(".feed-row")];
+      let rowIndex = 0;
+      setInterval(() => {
+        rows.forEach(row => row.classList.remove("is-live"));
+        rows[rowIndex % rows.length]?.classList.add("is-live");
+        rowIndex += 1;
+      }, 1700);
+    }
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        if (modal.classList.contains("open")) closeModal();
+        if (menuButton.getAttribute("aria-expanded") === "true") setMenu(false);
       }
-      /* Custom scrollbar for glassmorphism */
-      ::-webkit-scrollbar {
-        width: 8px;
+      if (event.key === "Tab" && modal.classList.contains("open")) {
+        const focusable = [...modal.querySelectorAll("button, input, a[href], [tabindex]:not([tabindex='-1'])")].filter(el => !el.disabled && el.offsetParent !== null);
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!first || !last) return;
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
       }
-      ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.3);
-      }
-      /* Optimize glassmorphism for mobile */
-      @media (max-width: 768px) {
-        .glass {
-          backdrop-filter: blur(8px) saturate(150%);
-        }
-        .glass-dark {
-          backdrop-filter: blur(8px) saturate(150%);
-        }
-      }
-      /* Fallback for browsers without backdrop-filter support */
-      @supports not (backdrop-filter: blur(12px)) {
-        .glass {
-          background: rgba(255, 255, 255, 0.9) !important;
-        }
-        .glass-dark {
-          background: rgba(0, 0, 0, 0.8) !important;
-        }
-      }
-    </style>
-    <script type="importmap">
-      {
-        "imports": {
-          "react": "https://esm.sh/react@^19.2.3",
-          "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-          "react/": "https://esm.sh/react@^19.2.3/",
-          "vite": "https://esm.sh/vite@^7.3.1",
-          "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
-        }
-      }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
-  </body>
+    });
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const email = String(emailInput.value || "").trim().toLowerCase();
+      if (String(honeypot.value || "").trim()) { setFeedback("Validação bloqueada.", "error"); return; }
+      if (Date.now() - openedAt < 1800) { setFeedback("Aguarde alguns segundos antes de enviar.", "error"); return; }
+      if (!validEmail(email)) { setFeedback("Use um e-mail válido. Domínios temporários são bloqueados.", "error"); return; }
+      if (!human.checked) { setFeedback("Confirme a intenção de download.", "error"); return; }
+      setFeedback("Validado. Download iniciado.", "ok");
+      downloadResume();
+      setTimeout(closeModal, 650);
+    });
+  })();
+  </script>
+</body>
 </html>

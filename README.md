@@ -1,52 +1,18 @@
-# Jean Aniceto - Revenue Operations Portfolio
+# Portfolio Page
 
-A modern, fully bilingual (EN/PT) portfolio showcasing expertise in **Revenue Operations, Automation, and Data Analytics**. Designed to bridge the gap between technical execution and business impact.
-A modern, fully bilingual (EN/PT) portfolio showcasing expertise in **Revenue Operations, Automation, and Data Analytics**. Designed to bridge the gap between technical execution and business impact.
+Site pessoal de Jean Carlos em arquivo unico, com foco em RevOps, CRM, automacao, dados e operacoes.
 
-**Live Demo:** [jeancsla.github.io/portfolio-page](https://jeancsla.github.io/portfolio-page)
+## Estrutura
 
----
+- `index.html`: pagina completa com HTML, CSS e JavaScript embutidos.
+- `.github/workflows/static.yml`: publicacao automatica no GitHub Pages.
 
-## 🚀 Highlights
+## Publicacao
 
-- **Bilingual Support**: Full English & Portuguese content with persistence.
-- **Real-Time Dynamic UI**: Background and accessibility features adapt to your local time.
-- **Project Deep-Dive**: Integrated with GitHub to pull real-time technical documentation for featured work.
-- **Performance First**: Optimized for speed (98+ Lighthouse score) and responsive across all devices.
+O projeto nao precisa de instalacao nem etapa de build. Ao enviar alteracoes para `main`, o GitHub Pages publica o conteudo estatico da raiz do repositorio.
 
-## 🛠️ Expertise
+Para testar localmente, abra `index.html` no navegador ou sirva a pasta com um servidor estatico simples.
 
-- **Revenue Operations**: CRM optimization (HubSpot/Zoho), forecasting, and sales cycle metrics.
-- **Automation**: Workflow orchestration using **n8n**, Zapier, and custom Python/Node.js scripts.
-- **Data Analytics**: Insight extraction with **SQL**, Metabase, and advanced data modeling.
-- **Development**: Full-stack capabilities with **React**, TypeScript, and modern API integrations.
+## Observacoes
 
-## 📂 Featured Projects
-
-1. **Notifica-Frete**: Full-stack freight notification platform with 500+ users.
-2. **WhatsApp Job Agent**: Automated notification system saving 100+ work hours monthly.
-3. **CRM Data Quality**: Automated validation pipelines for 100k+ records.
-4. **WhatsApp Survey MVP**: Rapidly deployed customer retention system saving R$200k+ ARR.
-
-## ⚡ Quick Start
-
-```bash
-# Install dependencies
-npm install  # or 'bun install'
-
-# Start development server
-npm run dev  # or 'bun dev'
-
-# Build for production
-npm run build # or 'bun run build'
-```
-
-## � Let's Connect
-
-- **LinkedIn**: [jean-aniceto](https://www.linkedin.com/in/jean-aniceto/)
-- **GitHub**: [@jeancsla](https://github.com/jeancsla)
-- **Calendar**: [Schedule a meeting](https://calendar.app.google/yQqyXCrMQpRJaoTu8)
-
----
-
-_Built with React 19, TypeScript, and Framer Motion._
+O conteudo de cases e resultados ainda esta mockado para preservar seguranca e evitar exposicao de informacoes nao publicas. A interface ja esta preparada para receber dados reais, links finais e um curriculo definitivo.
