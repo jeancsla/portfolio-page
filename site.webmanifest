@@ -1,11 +1,10 @@
 {
-  "name": "Jean Aniceto - Produtos digitais",
+  "name": "Jean Aniceto — produtos digitais",
   "short_name": "Jean Aniceto",
   "lang": "pt-BR",
-  "start_url": "/",
+  "start_url": "https://janiceto.com.br/",
   "display": "minimal-ui",
-  "background_color": "#f4f0e7",
-  "theme_color": "#10292b",
+  "background_color": "#f3efe6",
+  "theme_color": "#f3efe6",
   "icons": []
 }
-
