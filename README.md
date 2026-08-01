@@ -1,4 +1,4 @@
-# Jean Aniceto - produtos digitais
+# Jean Aniceto — produtos digitais
 
 Site público de Jean Aniceto, com foco em microsaas, automações, sistemas digitais e projetos de tecnologia para pequenos negócios.
 
@@ -17,5 +17,10 @@ Para testar localmente, abra `index.html` no navegador ou sirva a pasta com um s
 
 ## Transparência comercial
 
-A home identifica a empresa responsável, descreve os tipos de produtos e serviços oferecidos, informa o canal de suporte e deixa claro que não há checkout ativo nesta página. As condições específicas de uma futura oferta paga devem ser atualizadas na própria página do produto antes da cobrança.
+A home identifica a empresa responsável, descreve os tipos de produtos e serviços oferecidos e deixa claro que não há checkout ativo nesta página. Esta vitrine não coleta contatos; as condições específicas, o canal de suporte e as políticas de uma futura oferta paga devem ser atualizados na própria página do produto antes da cobrança.
+
+## Direção visual
+
+A interface usa uma composição editorial, tipografia de sistema e serif, linhas de separação e blocos retangulares. Não depende de fontes externas, mockups fictícios, métricas inventadas ou efeitos decorativos para explicar o trabalho.
+
 
