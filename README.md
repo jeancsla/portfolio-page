@@ -1,18 +1,21 @@
-# Portfolio Page
+# Jean Aniceto - produtos digitais
 
-Site pessoal de Jean Carlos em arquivo unico, com foco em RevOps, CRM, automacao, dados e operacoes.
+Site público de Jean Aniceto, com foco em microsaas, automações, sistemas digitais e projetos de tecnologia para pequenos negócios.
 
 ## Estrutura
 
-- `index.html`: pagina completa com HTML, CSS e JavaScript embutidos.
-- `.github/workflows/static.yml`: publicacao automatica no GitHub Pages.
+- `index.html`: home estática com HTML, CSS e JavaScript embutidos.
+- `vercel.json`: cabeçalhos básicos de segurança para a publicação na Vercel.
+- `robots.txt` e `site.webmanifest`: arquivos públicos para rastreamento e instalação.
+- `.github/workflows/static.yml`: publicação automática no GitHub Pages quando `main` é atualizado.
 
-## Publicacao
+## Publicação
 
-O projeto nao precisa de instalacao nem etapa de build. Ao enviar alteracoes para `main`, o GitHub Pages publica o conteudo estatico da raiz do repositorio.
+O projeto não precisa de instalação nem de etapa de build. A raiz pode ser publicada diretamente na Vercel ou no GitHub Pages.
 
-Para testar localmente, abra `index.html` no navegador ou sirva a pasta com um servidor estatico simples.
+Para testar localmente, abra `index.html` no navegador ou sirva a pasta com um servidor estático simples.
 
-## Observacoes
+## Transparência comercial
 
-O conteudo de cases e resultados ainda esta mockado para preservar seguranca e evitar exposicao de informacoes nao publicas. A interface ja esta preparada para receber dados reais, links finais e um curriculo definitivo.
+A home identifica a empresa responsável, descreve os tipos de produtos e serviços oferecidos, informa o canal de suporte e deixa claro que não há checkout ativo nesta página. As condições específicas de uma futura oferta paga devem ser atualizadas na própria página do produto antes da cobrança.
+
