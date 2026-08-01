@@ -412,6 +412,13 @@
       color: var(--muted);
       font-size: 1.15rem;
     }
+    .public-email {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+    .public-email:hover { color: var(--accent); }
     .identity-note {
       max-width: 52ch;
       margin-top: 36px!important;
@@ -507,40 +514,7 @@
 
     footer {
       padding: 34px 0 42px;
-      color: var(--muted);
-      background: var(--paper);
-      font-size: .78rem;
-    }
-    .footer-main {
-      display: grid;
-      grid-template-columns: .65fr 1.35fr;
-      gap: 40px;
-      padding-bottom: 25px;
-      border-bottom: 1px solid var(--line);
-    }
-    .footer-main strong { color: var(--ink); }
-    .footer-legal { max-width: 72ch; }
-    .footer-bottom {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 14px;
-      padding-top: 20px;
-      font: .65rem/1.4 var(--mono);
-      text-transform: uppercase;
-    }
-    footer a {
-      color: var(--ink);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    footer a:hover { color: var(--accent); }
-
-    @media (max-width: 900px) {
-      .hero-layout { grid-template-columns: 1fr; gap: 46px; min-height: 0; }
-      .hero-aside { min-height: 260px; }
-      .hero-index { margin-bottom: 28px; }
-      .section-head { grid-template-columns: minmax(120px, .4fr) 1fr; gap: 24px; }
+      col�m-�G����ƭy�ns: minmax(120px, .4fr) 1fr; gap: 24px; }
       .section-head .section-intro { grid-column: 2; }
       .identity-grid, .process-grid { grid-template-columns: 1fr; gap: 48px; }
       .next-grid { grid-template-columns: 1fr; gap: 44px; }
@@ -756,7 +730,7 @@
         <div class="identity-grid">
           <div class="identity-copy">
             <p>Eu crio e mantenho produtos digitais, serviços de informática, automações e ferramentas que ajudam negócios a trabalhar com mais clareza.</p>
-            <p>Esta página é uma vitrine pública do trabalho. Ela não exige senha, não tem login, não tem checkout e não coleta dados por formulário.</p>
+            <p>Esta página é uma vitrine pública do trabalho. Ela não exige senha, não tem login, checkout ou formulário de contato. Para falar sobre um projeto ou pedir suporte, use <a class="public-email" href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>.</p>
             <p class="identity-note">Produtos pagos terão uma página de oferta própria com descrição, preço, forma de entrega, suporte e condições antes de qualquer cobrança.</p>
           </div>
           <dl class="identity-facts">
@@ -781,7 +755,7 @@
         <div class="policy-grid">
           <details class="policy" open>
             <summary>Suporte e atendimento</summary>
-            <p>Esta vitrine não coleta contatos nem recebe solicitações por formulário. Quando um produto tiver cobrança ativa, a oferta informará o canal de suporte e os prazos de atendimento antes do pagamento.</p>
+            <p>O canal público para falar sobre projetos e suporte é <a class="public-email" href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>. Quando um produto tiver cobrança ativa, a oferta informará também os prazos e as condições de atendimento antes do pagamento.</p>
           </details>
           <details class="policy" open>
             <summary>Reembolso e disputas</summary>
@@ -804,7 +778,7 @@
         <div>
           <p class="section-label">07 / próximos passos</p>
           <h2>Acompanhe o que está sendo construído.</h2>
-          <p>Os projetos públicos e o código aberto ficam reunidos no GitHub. Novos produtos entram aqui quando estão prontos para serem apresentados.</p>
+          <p>Os projetos públicos e o código aberto ficam reunidos no GitHub. Para falar sobre um projeto ou pedir suporte, escreva para <a class="public-email" href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>.</p>
         </div>
         <a class="next-link" href="https://github.com/jeancsla" target="_blank" rel="noopener noreferrer">
           <span>GitHub / jeancsla</span>

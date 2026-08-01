@@ -17,7 +17,7 @@ Para testar localmente, abra `index.html` no navegador ou sirva a pasta com um s
 
 ## Transparência comercial
 
-A home identifica a empresa responsável, descreve os tipos de produtos e serviços oferecidos e deixa claro que não há checkout ativo nesta página. Esta vitrine não coleta contatos; as condições específicas, o canal de suporte e as políticas de uma futura oferta paga devem ser atualizados na própria página do produto antes da cobrança.
+A home identifica a empresa responsável, descreve os tipos de produtos e serviços oferecidos e deixa claro que não há checkout ativo nesta página. O canal público de contato é `contato@janiceto.com.br`; as condições específicas, o canal de suporte e as políticas de uma futura oferta paga devem ser atualizados na própria página do produto antes da cobrança.
 
 ## Direção visual
 
