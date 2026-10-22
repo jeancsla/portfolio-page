@@ -4,15 +4,15 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "www\\.janiceto\\.com\\.br" }],
-      "destination": "https://janiceto.com.br/:path*",
+      "destination": "https://janiceto.com.br/$1",
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "jean-aniceto\\.vercel\\.app" }],
-      "destination": "https://janiceto.com.br/:path*",
+      "destination": "https://janiceto.com.br/$1",
       "permanent": true
     }
   ],
