@@ -6,8 +6,8 @@
    - Uma classe por papel de texto. Regras de contexto usam :where() para nunca vencer uma classe.
    - Hover e foco só mudam cor, fundo, borda ou sublinhado. Nunca tamanho, espaçamento ou transform.
    - O amarelo (--field) é campo de marca com função: topo, cartão de contato, a linha do CNPJ, o fio das etapas.
-     Nunca é cor de texto.
-   - O tijolo (--brick) só aparece em hover de link sobre papel, ficha ou tinta (nunca sobre o amarelo: 3.86:1).
+     Nunca é cor de texto, exceto o rótulo dos botões de tinta (amarelo sobre tinta: 9.49:1).
+   - O tijolo (--brick) só aparece em hover de link ou botão sobre papel, ficha ou tinta (nunca sobre o amarelo: 3.86:1).
    - Um raio só (--r, 6px) para tudo que é caixa. O celular do topo é desenho de celular e tem o raio dele.
    - Molduras de tinta (2px) marcam o que é "documento": a etiqueta do CNPJ no topo, a ficha da empresa, o rodapé.
    - Fios e molduras são bordas (não degradês nem gap sobre fundo), para sobreviverem ao modo de alto contraste.
@@ -96,7 +96,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  scroll-padding-top: calc(var(--header-h) + 16px); /* âncoras e foco não somem sob o cabeçalho fixo */
+  scroll-padding-top: calc(var(--header-real, var(--header-h)) + 16px); /* âncoras e foco não somem sob o cabeçalho fixo; --header-real vem do site.js */
 }
 body {
   margin: 0;
@@ -109,7 +109,6 @@ body {
 img { display: block; max-width: 100%; height: auto; }
 ::selection { background: var(--field); color: var(--ink); }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-main:focus { outline: none; }
 a {
   color: inherit;
   text-decoration-thickness: 1px;
@@ -141,28 +140,30 @@ p { margin: 0 0 1em; }
   min-height: 48px; padding: 0 1.4rem;
   border: 2px solid var(--ink); border-radius: var(--r);
   background: var(--ink); color: var(--field);
-  font: 650 1rem/1.2 var(--sans); text-align: center; text-decoration: none; white-space: nowrap; cursor: pointer;
+  font: 650 1rem/1.2 var(--sans); text-align: center; text-decoration: none; cursor: pointer; /* sem nowrap: com texto ampliado, quebra em vez de vazar */
   transition: background-color .12s, border-color .12s, color .12s;
 }
 .btn:hover { background: var(--brick); border-color: var(--brick); color: #fff; }
+:where(.hero, .contact-card) .btn:not(.btn-ghost):hover { background: var(--sheet); border-color: var(--ink); color: var(--ink); } /* nos campos amarelos, sem tijolo */
 .btn-ghost { background: transparent; color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--field); }
-.btn-sm { min-height: 44px; padding: 0 1.1rem; font-size: var(--fs-small); }
+.btn-sm { min-height: 44px; padding: 0 1.1rem; font-size: var(--fs-small); line-height: 1.15; }
 .text-link { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* ===== Cabeçalho fixo ===== */
 .top {
+  container-type: inline-size; /* o menu sai pela largura medida em rem (segue a fonte da página); ver "Responsivo" */
   position: sticky; top: 0; z-index: 20;
   background: var(--paper); border-bottom: 1px solid var(--rule);
 }
 .top-inner { display: flex; align-items: center; gap: 1rem 2rem; min-height: var(--header-h); }
 .brand {
   display: inline-flex; align-items: center; gap: .6rem; margin-right: auto; padding-block: .5rem;
-  font: 400 1.25rem/1 var(--display); text-decoration: none; white-space: nowrap;
+  font: 400 1.25rem/1 var(--display); text-decoration: none;
 }
 .brand-mark { flex: none; width: 1.75rem; height: 1.75rem; }
 .brand:hover { text-decoration: underline; text-decoration-thickness: 2px; }
-.nav { display: flex; gap: 0 1.75rem; font-size: var(--fs-small); font-weight: 500; }
+.nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0 1.75rem; font-size: var(--fs-small); font-weight: 500; }
 .nav a { padding-block: .75rem; text-decoration: none; }
 .nav a:hover { text-decoration: underline; }
 
@@ -198,7 +199,7 @@ p { margin: 0 0 1em; }
 /* O celular: moldura de tinta sem enfeite, saindo da borda de baixo da vitrine. Mostra a vitrine de exemplo do produto. */
 .hero-phone { position: relative; min-height: 18rem; }
 .phone {
-  position: absolute; inset: 0;
+  position: absolute; inset: auto 0 0; max-height: 100%; /* da altura da captura, presa embaixo: nunca sobra tela branca */
   border: 10px solid var(--ink); border-bottom: 0;
   border-radius: 40px 40px 0 0;
   background: #fff;
@@ -233,7 +234,7 @@ p { margin: 0 0 1em; }
   border-radius: var(--r); background: var(--tint);
 }
 .shot img {
-  width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top left;
+  width: 100%; aspect-ratio: 1280 / 740; object-fit: cover; object-position: top left; /* corta as capturas 1280×800 em y=740, numa faixa em branco das duas páginas; confira ao recapturar */
   border: 1px solid rgb(20 37 37 / .22); border-bottom: 0; border-radius: 3px 3px 0 0;
   background: #fff;
 }
@@ -267,7 +268,7 @@ p { margin: 0 0 1em; }
 }
 .steps > li {
   counter-increment: step;
-  display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); column-gap: .75rem; align-items: baseline;
+  display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); column-gap: .75rem; align-items: baseline; align-content: start;
   padding-top: 1rem; border-top: 4px solid var(--field);
 }
 .steps > li::before {
@@ -297,7 +298,8 @@ p { margin: 0 0 1em; }
   .mail { font-size: clamp(1.25rem, 6.6cqi, 3rem); } /* o endereço inteiro cabe numa linha na largura do cartão */
 }
 .contact-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
-.copy-status { min-height: 1.6em; margin: .5rem 0 calc(-.5 * var(--pad)); color: var(--ink-2-field); font-size: var(--fs-small); }
+.copy-status { margin: 0; color: var(--ink-2-field); font-size: var(--fs-small); }
+.copy-status:not(:empty) { margin-top: .5rem; } /* vazia, não ocupa espaço: o respiro de baixo do cartão fica igual ao de cima */
 .contact-help { padding-top: clamp(0px, 2vw, 1.5rem); }
 .include-title { margin: 0 0 1rem; font: 400 1.5rem/1.2 var(--display); }
 .checklist { margin: 0 0 1.25rem; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
@@ -333,7 +335,7 @@ p { margin: 0 0 1em; }
 .registry .row-key { background: var(--field); border-top-color: var(--ink); }
 .registry .row-key + div { border-top-color: var(--ink); }
 .registry .row-key dt { color: var(--ink-2-field); }
-.registry .key { font-size: clamp(1.3125rem, 1.15rem + .6vw, 1.625rem); font-weight: 700; line-height: 1.3; }
+.registry .key { font-size: clamp(1.3125rem, 1.15rem + .6vw, 1.625rem); font-weight: 700; line-height: 1.3; white-space: normal; } /* com texto ampliado, quebra na barra (<wbr>) */
 .cnae { margin: 0; padding: 0; list-style: none; }
 .cnae li { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); column-gap: .75rem; }
 .cnae li + li { margin-top: .45rem; }
@@ -390,11 +392,13 @@ p { margin: 0 0 1em; }
   .contact { grid-template-columns: minmax(0, 1fr); }
   .contact-help { padding-top: 0; }
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) { /* abaixo de 900, o título do topo não cabe ao lado do celular em três linhas */
   .hero { grid-template-columns: minmax(0, 1fr); }
   .hero-text { padding-bottom: 2rem; }
   .hero-phone { justify-self: center; width: min(78%, 280px); height: clamp(240px, 68vw, 320px); min-height: 0; }
   .phone { border-width: 9px; border-radius: 36px 36px 0 0; }
+}
+@media (max-width: 800px) {
   .project, .also { display: flex; flex-direction: column; align-items: stretch; }
   .project-fig { order: -1; margin-bottom: 1.5rem; }
   .project-text, .project-flip .project-text { padding: 1rem 0 0; }
@@ -403,26 +407,40 @@ p { margin: 0 0 1em; }
   .company-aside .note { margin-top: 1.5rem; }
   .policy { display: block; }
   .policy > p { max-width: none; }
+  .cols, .steps { grid-template-columns: minmax(0, 1fr); }
+  .cols > li, .steps > li { max-width: 40rem; }
+}
+/* No celular: marca + "Fale comigo"; os links ficam no rodapé. Em em/rem, e não em px, para o menu sair antes de
+   empurrar o botão para fora quando a fonte do navegador ou o zoom só de texto aumentam (720px com a fonte padrão). */
+@media (max-width: 45em) {
+  .nav { display: none; }
+  .top-inner { column-gap: .75rem; }
+}
+@container (max-width: 45rem) {
+  .nav { display: none; }
+  .top-inner { column-gap: .75rem; }
 }
 @media (max-width: 720px) {
   :root { --header-h: 60px; }
   .hero, .contact-card, .shot { margin-inline: calc(8px - var(--gutter)); }  /* quase de ponta a ponta no celular */
   .shot { padding: 12px 12px 0; }
   .caption { margin-top: .5rem; }
-  .nav { display: none; }            /* no celular: marca + "Fale comigo"; os links ficam no rodapé */
   .kicker { margin-bottom: 1rem; }
   .lede { margin-top: 1.25rem; }
   .actions { margin-top: 1.5rem; gap: .25rem 1.25rem; }
   .trust { margin-top: 1rem; }
   .contact-actions .btn { flex: 1 1 13rem; }
-  .cols, .steps { grid-template-columns: minmax(0, 1fr); }
   .foot-links { grid-template-columns: repeat(3, max-content); column-gap: 1.5rem; }
 }
 @media (max-width: 560px) {
   .registry > div { grid-template-columns: minmax(0, 1fr); padding: .75rem 1rem .8rem; }
   .cnae li { grid-template-columns: minmax(0, 1fr); }
 }
-@media (max-width: 400px) {
+@media (max-width: 28.75em) { /* a cidade desce inteira para a segunda linha, sem o "·" pendurado */
+  .kicker .sep { display: none; }
+  .kicker-place { display: block; }
+}
+@media (max-width: 25em) {
   .foot-links { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1rem; }
 }
 @media (max-width: 360px) {
@@ -431,10 +449,14 @@ p { margin: 0 0 1em; }
   .kicker { margin-bottom: .75rem; }
   .lede { margin-top: 1rem; }
   .actions { margin-top: 1.25rem; }
-  .top-inner { column-gap: .75rem; }
   .brand { gap: .5rem; font-size: 1.125rem; }
   .brand-mark { width: 1.5rem; height: 1.5rem; }
-  .btn-sm { padding: 0 .85rem; white-space: normal; line-height: 1.15; } /* com espaçamento de texto aumentado, quebra em vez de vazar */
+  .btn-sm { padding: 0 .85rem; }
+}
+
+@media (max-height: 420px) { /* tela baixa (zoom alto, celular deitado): o cabeçalho rola junto para não tapar o texto */
+  .top { position: static; }
+  html { scroll-padding-top: 1rem; }
 }
 
 /* ===== Movimento ===== */

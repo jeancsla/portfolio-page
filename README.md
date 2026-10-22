@@ -1,6 +1,6 @@
 # Jean Aniceto — software para pequenos negócios
 
-Site profissional de **Jean Aniceto**, nome com que **51.046.020 JEAN CARLOS SANTOS LIMA ANICETO** (MEI, CNPJ 51.046.020/0001-34, São José dos Campos/SP) apresenta seus serviços (sites, sistemas sob medida e automações) e seus produtos próprios, como o [Catálogo Super](https://catalogosuper.com.br). A página também reúne os dados da empresa e as políticas de suporte, reembolso, cancelamento e privacidade.
+Site profissional de **Jean Aniceto**, nome com que **51.046.020 JEAN CARLOS SANTOS LIMA ANICETO** (MEI, CNPJ 51.046.020/0001-34, São José dos Campos/SP) apresenta seus serviços (sites, sistemas sob medida e automações) e seus produtos próprios, como o [Catálogo Super](https://catalogosuper.com.br). A página também reúne os dados da empresa e as políticas de suporte, cancelamento, reembolso e privacidade.
 
 **Site em produção:** [janiceto.com.br](https://janiceto.com.br)
 
@@ -31,15 +31,17 @@ npx serve .
 
 (O `serve` não aplica os cabeçalhos do `vercel.json`. Para testar a CSP de verdade, use um deploy de preview.)
 
+Nos deploys de preview, a Vercel injeta a barra de ferramentas dela (Vercel Toolbar), carregada de `vercel.live`. A CSP bloqueia essa barra de propósito, então erros de CSP que citam `vercel.live` no console de um preview são esperados e não vêm do site; em `janiceto.com.br` eles não aparecem. Para não vê-los, desligue a barra para Preview nas configurações do projeto na Vercel ou crie a variável de ambiente `VERCEL_PREVIEW_FEEDBACK_ENABLED=0` no ambiente de Preview.
+
 ## Regras para não quebrar o site
 
 - **Nada de CSS ou JS dentro do HTML** (`<style>`, `style="..."`, `<script>` com código, `onclick`). A política de segurança (CSP) bloqueia tudo isso e a página fica sem estilo. Coloque estilos em `assets/site.css` e scripts em `assets/site.js`.
 - **Nada carregado de outros sites** (Google Fonts, analytics, embeds). Além da CSP bloquear, a política de privacidade diz que o site não faz isso. Se um dia adicionar, atualize a CSP no `vercel.json` e o texto de Privacidade.
-- **Fontes nunca são substituídas com o mesmo nome**: elas ficam em cache por 1 ano. Se trocar uma fonte, use outro nome de arquivo.
+- **Nunca troque uma fonte mantendo o mesmo nome de arquivo**: as fontes ficam em cache por 1 ano (`immutable`). Se trocar uma fonte, use outro nome, e publique o arquivo novo no mesmo commit do CSS que aponta para ele: um nome que der 404 também fica em cache por 1 ano para quem o pedir.
 
 ## Manutenção
 
-- **Dados da empresa:** a data em "Situação cadastral" indica quando o cadastro foi conferido. Confira de tempos em tempos (por exemplo em `https://brasilapi.com.br/api/cnpj/v1/51046020000134`) e atualize a data.
+- **Dados da empresa:** a data em "Situação cadastral" indica quando o cadastro foi conferido. Confira de tempos em tempos (por exemplo, em `https://brasilapi.com.br/api/cnpj/v1/51046020000134`) e atualize a data.
 - **Capturas dos projetos:** `node tools/capture-screens.mjs` (depois atualize a data das legendas no `index.html`).
 - **Ícones e imagem de compartilhamento:** `node tools/make-assets.mjs` (instruções no topo do arquivo).
 - **security.txt:** renove a data `Expires` uma vez por ano.

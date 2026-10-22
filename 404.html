@@ -10,18 +10,20 @@
   <link rel="preload" href="/assets/fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <header class="top">
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
     <div class="wrap top-inner">
       <a class="brand" href="/"><img class="brand-mark" src="/favicon.svg" width="28" height="28" alt="">Jean Aniceto</a>
       <a class="btn btn-sm" href="/#contato">Fale comigo</a>
     </div>
   </header>
-  <main class="wrap not-found">
+  <main class="wrap not-found" id="conteudo">
     <div class="hero">
       <div class="hero-text">
         <p class="kicker">Erro 404</p>
@@ -37,7 +39,22 @@
   </main>
   <footer class="wrap">
     <div class="foot">
-      <p class="foot-legal">51.046.020 JEAN CARLOS SANTOS LIMA ANICETO · CNPJ <span class="num">51.046.020/0001-34</span> · São José dos Campos/SP</p>
+      <div class="foot-id">
+        <p class="foot-name"><img class="foot-mark" src="/favicon.svg" width="24" height="24" alt="">Jean Aniceto · software para pequenos negócios</p>
+        <p class="foot-copy">© <span id="year">2026</span> Jean Aniceto</p>
+      </div>
+      <p class="foot-legal">51.046.020 JEAN CARLOS SANTOS LIMA ANICETO · CNPJ&nbsp;<span class="num">51.046.020/0001-34</span> · São&nbsp;José&nbsp;dos&nbsp;Campos/SP</p>
+      <nav class="foot-links" aria-label="Rodapé">
+        <a href="/#projetos">Projetos</a>
+        <a href="/#servicos">Serviços</a>
+        <a href="/#contato">Contato</a>
+        <a href="/#empresa">Empresa</a>
+        <a href="/#suporte">Suporte</a>
+        <a href="/#cancelamento">Cancelamento</a>
+        <a href="/#reembolso">Reembolso</a>
+        <a href="/#privacidade">Privacidade</a>
+        <a href="https://github.com/jeancsla">GitHub</a>
+      </nav>
     </div>
   </footer>
 </body>
