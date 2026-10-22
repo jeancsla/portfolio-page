@@ -3,840 +3,336 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f3efe6">
-  <meta name="color-scheme" content="light">
-  <title>Jean Aniceto — produtos digitais</title>
-  <meta name="description" content="Jean Aniceto cria microsaas, automações e sistemas digitais para tornar operações pequenas mais simples, claras e úteis.">
-  <meta name="author" content="51.046.020 JEAN CARLOS SANTOS LIMA ANICETO">
-  <meta name="robots" content="index, follow">
+  <title>Jean Aniceto — software para pequenos negócios</title>
+  <meta name="description" content="Sites, sistemas sob medida e automações para pequenos negócios, por Jean Aniceto, de São José dos Campos/SP. Criador do Catálogo Super.">
   <link rel="canonical" href="https://janiceto.com.br/">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://janiceto.com.br/">
-  <meta property="og:site_name" content="Jean Aniceto">
-  <meta property="og:title" content="Jean Aniceto — produtos digitais">
-  <meta property="og:description" content="Microsaas, automações e sistemas digitais feitos para resolver problemas concretos.">
-  <meta property="og:locale" content="pt_BR">
-  <meta name="twitter:card" content="summary">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23142525'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial,sans-serif' font-size='21' font-weight='700' fill='%23f3efe6'%3EJA%3C/text%3E%3C/svg%3E">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Jean Aniceto">
+  <meta name="theme-color" content="#f7f3ea">
+  <meta name="color-scheme" content="light">
+
+  <link rel="preload" href="/assets/fonts/young-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <style>
-    :root {
-      --paper: #f3efe6;
-      --paper-strong: #fffdf7;
-      --ink: #142525;
-      --muted: #5c6967;
-      --line: #b9c1ba;
-      --line-strong: #6d7b78;
-      --night: #142525;
-      --accent: #d94f32;
-      --yellow: #e4c45d;
-      --display: Georgia, "Times New Roman", serif;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-      --max: 1180px;
-    }
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Jean Aniceto">
+  <meta property="og:url" content="https://janiceto.com.br/">
+  <meta property="og:title" content="Jean Aniceto — software para pequenos negócios">
+  <meta property="og:description" content="Sites, sistemas sob medida, automações e produtos próprios para pequenos negócios. São José dos Campos/SP.">
+  <meta property="og:image" content="https://janiceto.com.br/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Jean Aniceto: software para o dia a dia de pequenos negócios.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image:alt" content="Jean Aniceto: software para o dia a dia de pequenos negócios.">
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      min-width: 320px;
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font: 1rem/1.55 var(--sans);
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    a, summary { -webkit-tap-highlight-color: transparent; }
-    ::selection { color: var(--paper); background: var(--accent); }
-    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-
-    .container {
-      width: min(var(--max), calc(100% - 48px));
-      margin: 0 auto;
-    }
-    .skip-link {
-      position: fixed;
-      top: -80px;
-      left: 16px;
-      z-index: 50;
-      padding: 10px 14px;
-      color: var(--paper);
-      background: var(--night);
-      font-weight: 700;
-    }
-    .skip-link:focus { top: 16px; }
-
-    .site-header {
-      border-bottom: 1px solid var(--ink);
-      background: var(--paper);
-    }
-    .site-nav {
-      display: flex;
-      min-height: 78px;
-      align-items: center;
-      justify-content: space-between;
-      gap: 28px;
-    }
-    .brand {
-      display: inline-flex;
-      min-width: max-content;
-      align-items: center;
-      gap: 11px;
-    }
-    .brand-mark {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      color: var(--paper);
-      background: var(--night);
-      font: 700 12px/1 var(--mono);
-      letter-spacing: -.08em;
-    }
-    .brand-copy strong {
-      display: block;
-      font-size: .86rem;
-      line-height: 1.1;
-      letter-spacing: .02em;
-      text-transform: uppercase;
-    }
-    .brand-copy small {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font: .62rem/1.2 var(--mono);
-      letter-spacing: .03em;
-      text-transform: uppercase;
-    }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 22px;
-      color: var(--muted);
-      font-size: .82rem;
-    }
-    .nav-links a {
-      padding: 8px 0;
-      border-bottom: 1px solid transparent;
-      white-space: nowrap;
-    }
-    .nav-links a:hover {
-      color: var(--ink);
-      border-bottom-color: var(--accent);
-    }
-    .nav-links .nav-github { color: var(--ink); }
-
-    .hero {
-      border-bottom: 1px solid var(--ink);
-      background: var(--paper);
-    }
-    .hero-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1.22fr) minmax(250px, .78fr);
-      gap: 80px;
-      min-height: 675px;
-      align-items: end;
-      padding: clamp(86px, 12vw, 156px) 0 76px;
-    }
-    .eyebrow,
-    .section-label,
-    .work-label,
-    .hero-aside-label,
-    .footer-meta {
-      color: var(--accent);
-      font: .68rem/1.4 var(--mono);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .eyebrow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px 18px;
-      margin: 0 0 24px;
-    }
-    .eyebrow span:first-child { color: var(--ink); }
-    .hero h1 {
-      max-width: 10.5ch;
-      margin: 0;
-      color: var(--ink);
-      font: 400 clamp(3.55rem, 8.4vw, 8.4rem)/.88 var(--display);
-      letter-spacing: -.075em;
-      text-wrap: balance;
-    }
-    .hero h1 em {
-      color: var(--accent);
-      font-style: normal;
-    }
-    .hero-lede {
-      max-width: 48ch;
-      margin: 32px 0 0;
-      color: var(--muted);
-      font-size: clamp(1.08rem, 1.8vw, 1.28rem);
-      line-height: 1.45;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 22px;
-      margin-top: 34px;
-    }
-    .button {
-      display: inline-flex;
-      min-height: 48px;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 0 18px;
-      border: 1px solid var(--ink);
-      font-weight: 700;
-      transition: background .18s ease, color .18s ease, transform .18s ease;
-    }
-    .button:hover { transform: translateY(-2px); }
-    .button-dark { color: var(--paper); background: var(--night); }
-    .button-dark:hover { color: var(--ink); background: var(--yellow); }
-    .text-link {
-      border-bottom: 1px solid var(--accent);
-      color: var(--ink);
-      font-weight: 700;
-    }
-    .text-link:hover { color: var(--accent); }
-    .hero-aside {
-      display: flex;
-      min-height: 410px;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-left: 30px;
-      border-left: 1px solid var(--line-strong);
-    }
-    .hero-index {
-      margin: 0 0 46px -10px;
-      color: transparent;
-      font: 400 clamp(8rem, 18vw, 14rem)/.7 var(--display);
-      letter-spacing: -.12em;
-      -webkit-text-stroke: 1px var(--line-strong);
-      user-select: none;
-    }
-    .hero-aside-label { margin: 0 0 12px; }
-    .hero-aside p {
-      max-width: 19ch;
-      margin: 0;
-      color: var(--ink);
-      font: 400 clamp(1.65rem, 3vw, 2.6rem)/.98 var(--display);
-      letter-spacing: -.045em;
-    }
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 24px;
-      padding: 22px 0 0;
-      border-top: 1px solid var(--ink);
-      color: var(--muted);
-      font: .68rem/1.4 var(--mono);
-      text-transform: uppercase;
-    }
-    .hero-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 24px;
-      padding-bottom: 28px;
-    }
-    .hero-meta-row span::before {
-      content: "/";
-      margin-right: 8px;
-      color: var(--accent);
-    }
-
-    section { scroll-margin-top: 24px; }
-    .section {
-      padding: 116px 0;
-      border-bottom: 1px solid var(--ink);
-    }
-    .section-head {
-      display: grid;
-      grid-template-columns: minmax(140px, .36fr) minmax(0, 1fr) minmax(220px, .62fr);
-      gap: 42px;
-      align-items: end;
-      margin-bottom: 58px;
-    }
-    .section-label { padding-bottom: 7px; }
-    h2 {
-      max-width: 15ch;
-      margin: 0;
-      color: var(--ink);
-      font: 400 clamp(2.55rem, 5.3vw, 5.3rem)/.93 var(--display);
-      letter-spacing: -.065em;
-      text-wrap: balance;
-    }
-    .section-intro {
-      max-width: 38ch;
-      margin: 0 0 2px;
-      color: var(--muted);
-    }
-
-    .work-list { border-top: 1px solid var(--ink); }
-    .work-item {
-      display: grid;
-      grid-template-columns: 64px minmax(0, 1fr) 220px;
-      gap: 28px;
-      min-height: 245px;
-      align-items: start;
-      padding: 28px 0 32px;
-      border-bottom: 1px solid var(--line);
-      transition: padding .18s ease, background .18s ease;
-    }
-    .work-item:hover { padding-right: 18px; padding-left: 18px; background: var(--yellow); }
-    .work-item.featured { color: var(--paper); background: var(--night); }
-    .work-item.featured:hover { background: var(--accent); }
-    .work-number {
-      color: var(--accent);
-      font: .75rem/1 var(--mono);
-    }
-    .featured .work-number { color: var(--yellow); }
-    .work-label { margin-bottom: 18px; }
-    .featured .work-label { color: var(--yellow); }
-    .work-item h3 {
-      margin: 0 0 13px;
-      font: 400 clamp(2.2rem, 4.6vw, 4.7rem)/.9 var(--display);
-      letter-spacing: -.065em;
-    }
-    .work-item p {
-      max-width: 54ch;
-      margin: 0;
-      color: var(--muted);
-    }
-    .featured p { color: rgba(243, 239, 230, .72); }
-    .work-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 25px;
-      border-bottom: 1px solid currentColor;
-      color: var(--ink);
-      font-weight: 700;
-    }
-    .featured .work-link { color: var(--yellow); }
-    .work-link:hover { color: var(--accent); }
-    .featured .work-link:hover { color: var(--paper); }
-    .work-meta {
-      display: grid;
-      align-content: start;
-      gap: 9px;
-      padding-top: 2px;
-      color: var(--muted);
-      font: .68rem/1.35 var(--mono);
-      text-transform: uppercase;
-    }
-    .work-meta span { padding-top: 8px; border-top: 1px solid var(--line); }
-    .featured .work-meta { color: rgba(243, 239, 230, .64); }
-    .featured .work-meta span { border-top-color: rgba(243, 239, 230, .28); }
-    .work-note {
-      max-width: 70ch;
-      margin: 22px 0 0;
-      color: var(--muted);
-      font: .72rem/1.5 var(--mono);
-    }
-
-    .services-section { background: var(--paper-strong); }
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid var(--ink);
-      border-left: 1px solid var(--line);
-    }
-    .service {
-      min-height: 275px;
-      padding: 24px 25px 28px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .service:hover { background: var(--yellow); }
-    .service-number {
-      color: var(--accent);
-      font: .72rem/1 var(--mono);
-    }
-    .service h3 {
-      margin: 68px 0 14px;
-      font: 400 clamp(1.7rem, 3vw, 2.6rem)/.96 var(--display);
-      letter-spacing: -.055em;
-    }
-    .service p { max-width: 34ch; margin: 0; color: var(--muted); }
-
-    .process-section {
-      padding: 116px 0;
-      color: var(--paper);
-      background: var(--night);
-    }
-    .process-section h2 { color: var(--paper); }
-    .process-section .section-intro { color: rgba(243, 239, 230, .68); }
-    .process-grid {
-      display: grid;
-      grid-template-columns: minmax(190px, .7fr) minmax(0, 1.3fr);
-      gap: 70px;
-      align-items: start;
-    }
-    .process-list { border-top: 1px solid rgba(243, 239, 230, .34); }
-    .process-step {
-      display: grid;
-      grid-template-columns: 58px 1fr;
-      gap: 22px;
-      padding: 22px 0 25px;
-      border-bottom: 1px solid rgba(243, 239, 230, .34);
-    }
-    .process-step > span {
-      color: var(--yellow);
-      font: .72rem/1.4 var(--mono);
-    }
-    .process-step h3 {
-      margin: 0 0 8px;
-      color: var(--paper);
-      font: 400 clamp(1.6rem, 2.7vw, 2.4rem)/1 var(--display);
-      letter-spacing: -.04em;
-    }
-    .process-step p { max-width: 50ch; margin: 0; color: rgba(243, 239, 230, .65); }
-
-    .identity-section { background: var(--paper); }
-    .identity-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
-      gap: 80px;
-      align-items: start;
-    }
-    .identity-copy p {
-      max-width: 56ch;
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: 1.15rem;
-    }
-    .public-email {
-      color: var(--ink);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 4px;
-    }
-    .public-email:hover { color: var(--accent); }
-    .identity-note {
-      max-width: 52ch;
-      margin-top: 36px!important;
-      padding-top: 18px;
-      border-top: 1px solid var(--accent);
-      color: var(--ink)!important;
-      font: .75rem/1.55 var(--mono);
-      text-transform: uppercase;
-    }
-    .identity-facts {
-      display: grid;
-      margin: 0;
-      border-top: 1px solid var(--ink);
-    }
-    .identity-fact {
-      display: grid;
-      grid-template-columns: 128px 1fr;
-      gap: 20px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line);
-    }
-    .identity-fact dt {
-      color: var(--muted);
-      font: .65rem/1.5 var(--mono);
-      text-transform: uppercase;
-    }
-    .identity-fact dd {
-      margin: 0;
-      overflow-wrap: anywhere;
-      color: var(--ink);
-      font-size: .92rem;
-    }
-
-    .policy-section { background: var(--paper-strong); }
-    .policy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      border-top: 1px solid var(--ink);
-      border-left: 1px solid var(--line);
-    }
-    .policy {
-      padding: 22px 24px 24px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .policy summary {
-      cursor: pointer;
-      list-style: none;
-      color: var(--ink);
-      font-weight: 700;
-    }
-    .policy summary::-webkit-details-marker { display: none; }
-    .policy summary::after {
-      content: "+";
-      float: right;
-      color: var(--accent);
-      font: 1.15rem/1 var(--mono);
-    }
-    .policy[open] summary::after { content: "−"; }
-    .policy p {
-      max-width: 55ch;
-      margin: 16px 0 0;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .next-section {
-      padding: 108px 0 112px;
-      border-bottom: 1px solid var(--ink);
-      background: var(--accent);
-    }
-    .next-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(240px, .58fr);
-      gap: 70px;
-      align-items: end;
-    }
-    .next-section h2 { max-width: 12ch; color: var(--ink); }
-    .next-section p { max-width: 42ch; margin: 24px 0 0; color: rgba(20, 37, 37, .76); }
-    .next-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 20px 0;
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-      color: var(--ink);
-      font-weight: 700;
-    }
-    .next-link:hover { color: var(--paper); }
-    .next-link span { font: .7rem var(--mono); text-transform: uppercase; }
-
-    footer {
-      padding: 34px 0 42px;
-      color: var(--muted);
-      background: var(--paper);
-      font-size: .78rem;
-    }
-    .footer-main {
-      display: grid;
-      grid-template-columns: .65fr 1.35fr;
-      gap: 40px;
-      padding-bottom: 25px;
-      border-bottom: 1px solid var(--line);
-    }
-    .footer-main strong { color: var(--ink); }
-    .footer-legal { max-width: 72ch; }
-    .footer-bottom {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 14px;
-      padding-top: 20px;
-      font: .65rem/1.4 var(--mono);
-      text-transform: uppercase;
-    }
-    footer a {
-      color: var(--ink);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-    footer a:hover { color: var(--accent); }
-
-    @media (max-width: 900px) {
-      .hero-layout { grid-template-columns: 1fr; gap: 46px; min-height: 0; }
-      .hero-aside { min-height: 260px; }
-      .hero-index { margin-bottom: 28px; }
-      .section-head { grid-template-columns: minmax(120px, .4fr) 1fr; gap: 24px; }
-      .section-head .section-intro { grid-column: 2; }
-      .identity-grid, .process-grid { grid-template-columns: 1fr; gap: 48px; }
-      .next-grid { grid-template-columns: 1fr; gap: 44px; }
-      .footer-main { grid-template-columns: 1fr; gap: 18px; }
-    }
-    @media (max-width: 680px) {
-      .container { width: min(100% - 30px, var(--max)); }
-      .site-nav { min-height: 0; align-items: flex-start; flex-wrap: wrap; padding: 14px 0 11px; }
-      .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-        gap: 20px;
-        overflow-x: auto;
-        padding-top: 6px;
-        scrollbar-width: none;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://janiceto.com.br/#organizacao",
+        "name": "Jean Aniceto",
+        "legalName": "51.046.020 JEAN CARLOS SANTOS LIMA ANICETO",
+        "taxID": "51.046.020/0001-34",
+        "description": "Sites, sistemas sob medida, automações e produtos próprios para pequenos negócios.",
+        "url": "https://janiceto.com.br/",
+        "logo": "https://janiceto.com.br/icon-512.png",
+        "image": "https://janiceto.com.br/og-image.png",
+        "email": "contato@janiceto.com.br",
+        "foundingDate": "2023-06-14",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "São José dos Campos",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "areaServed": { "@type": "Country", "name": "Brasil" },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "contato@janiceto.com.br",
+          "availableLanguage": "pt-BR"
+        },
+        "knowsAbout": ["Desenvolvimento de software sob medida", "Automação de processos", "Integração de sistemas", "Micro-SaaS"],
+        "founder": { "@id": "https://janiceto.com.br/#jean" },
+        "sameAs": ["https://github.com/jeancsla"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://janiceto.com.br/#jean",
+        "name": "Jean Aniceto",
+        "url": "https://janiceto.com.br/",
+        "jobTitle": "Desenvolvedor de software",
+        "worksFor": { "@id": "https://janiceto.com.br/#organizacao" },
+        "sameAs": ["https://github.com/jeancsla"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://janiceto.com.br/#site",
+        "url": "https://janiceto.com.br/",
+        "name": "Jean Aniceto",
+        "alternateName": "janiceto.com.br",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://janiceto.com.br/#organizacao" }
       }
-      .nav-links::-webkit-scrollbar { display: none; }
-      .hero-layout { padding: 78px 0 60px; }
-      .hero h1 { font-size: clamp(3.2rem, 16vw, 5.6rem); }
-      .hero-aside { min-height: 235px; padding-left: 18px; }
-      .hero-index { font-size: clamp(7rem, 31vw, 10rem); }
-      .hero-meta-row { gap: 8px 16px; }
-      .section, .process-section { padding: 78px 0; }
-      .section-head { display: block; margin-bottom: 38px; }
-      .section-head h2 { margin-top: 14px; }
-      .section-head .section-intro { margin-top: 18px; }
-      h2 { font-size: clamp(2.8rem, 13vw, 4.6rem); }
-      .work-item { grid-template-columns: 36px 1fr; gap: 16px; min-height: 0; padding: 22px 0 26px; }
-      .work-item:hover { padding-right: 10px; padding-left: 10px; }
-      .work-meta { grid-column: 2; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .work-item h3 { font-size: clamp(2.35rem, 12vw, 4.2rem); }
-      .service-grid, .policy-grid { grid-template-columns: 1fr; }
-      .service { min-height: 230px; }
-      .service h3 { margin-top: 46px; }
-      .identity-fact { grid-template-columns: 1fr; gap: 5px; }
-      .next-section { padding: 78px 0; }
-      .footer-bottom { display: block; }
-      .footer-bottom span { display: block; margin-top: 10px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms!important; }
-    }
-  </style>
+    ]
+  }
+  </script>
 </head>
-
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-
-  <header class="site-header">
-    <div class="container site-nav">
-      <a class="brand" href="#inicio" aria-label="Jean Aniceto - início">
-        <span class="brand-mark" aria-hidden="true">JA</span>
-        <span class="brand-copy">
-          <strong>Jean Aniceto</strong>
-          <small>produtos digitais</small>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="Navegação principal">
-        <a href="#trabalho">Trabalho</a>
-        <a href="#servicos">O que faço</a>
-        <a href="#processo">Processo</a>
+  <header class="top">
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <div class="wrap top-inner">
+      <a class="brand" href="#inicio"><img class="brand-mark" src="/favicon.svg" width="28" height="28" alt="">Jean Aniceto</a>
+      <nav class="nav" aria-label="Principal">
+        <a href="#projetos">Projetos</a>
+        <a href="#servicos">Serviços</a>
         <a href="#empresa">Empresa</a>
-        <a class="nav-github" href="https://github.com/jeancsla" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="#politicas">Políticas</a>
       </nav>
+      <a class="btn btn-sm" href="#contato">Fale comigo</a>
     </div>
   </header>
 
-  <main id="conteudo">
-    <section class="hero" id="inicio">
-      <div class="container hero-layout">
-        <div>
-          <p class="eyebrow"><span>01</span><span>estúdio independente de produto</span><span>São José dos Campos / SP</span></p>
-          <h1>Software que deixa a operação <em>mais leve.</em></h1>
-          <p class="hero-lede">Eu crio microsaas, automações e sistemas digitais para transformar tarefas complicadas em ferramentas que alguém consegue usar todos os dias.</p>
-          <div class="hero-actions">
-            <a class="button button-dark" href="#trabalho">Ver trabalhos <span aria-hidden="true">→</span></a>
-            <a class="text-link" href="#empresa">Conhecer a empresa</a>
+  <main id="conteudo" tabindex="-1">
+    <div class="wrap">
+
+      <section class="hero" id="inicio" aria-labelledby="t-inicio">
+        <div class="hero-text">
+          <p class="kicker">Desenvolvedor independente · São&nbsp;José&nbsp;dos&nbsp;Campos/SP</p>
+          <h1 id="t-inicio">Software para o dia&nbsp;a&nbsp;dia de pequenos negócios</h1>
+          <p class="lede">Sou Jean Aniceto. Faço sites, sistemas sob medida e automações para empresas que ainda organizam o trabalho em planilhas e conversas de WhatsApp. Também mantenho produtos próprios, como o Catálogo Super.</p>
+          <p class="actions">
+            <a class="btn" href="#contato">Falar sobre um projeto</a>
+            <a class="text-link" href="#projetos">Ver projetos</a>
+          </p>
+          <p class="trust"><span class="trust-id">MEI · CNPJ <span class="num">51.046.020/0001-34</span></span><span class="sep"> · </span><a href="#empresa">Dados da empresa e políticas</a></p>
+        </div>
+        <div class="hero-phone">
+          <div class="phone">
+            <img src="/assets/img/catalogo-super-loja.webp" width="567" height="1239" fetchpriority="high" decoding="async" alt="Catálogo de exemplo do Catálogo Super aberto no celular.">
           </div>
         </div>
-        <aside class="hero-aside" aria-label="Resumo do trabalho">
-          <div class="hero-index" aria-hidden="true">01</div>
-          <p class="hero-aside-label">Em uma frase</p>
-          <p>Problema concreto. Produto pequeno. Uso diário.</p>
-        </aside>
-      </div>
-      <div class="container hero-meta-row">
-        <span>microsaas</span>
-        <span>web</span>
-        <span>automação</span>
-        <span>produto próprio</span>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="trabalho">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-label">02 / trabalho selecionado</p>
-          <h2>Coisas que já saíram do rascunho.</h2>
-          <p class="section-intro">Uma seleção objetiva do que estou construindo e publicando. Cada trabalho aponta apenas para o que está disponível publicamente.</p>
+      <section class="sec" id="projetos" aria-labelledby="t-projetos">
+        <header class="sec-head">
+          <h2 id="t-projetos">Projetos</h2>
+          <p class="sec-desc">Um produto meu, um site feito para um cliente e um jogo que criei para testar uma ideia.</p>
+        </header>
+        <div class="work">
+          <article class="project" aria-labelledby="p-catalogo">
+            <div class="project-text">
+              <h3 id="p-catalogo">Catálogo Super</h3>
+              <p class="status">Produto próprio · em operação</p>
+              <p class="desc">Catálogo digital com link próprio e QR Code para pequenos negócios que vendem pelo WhatsApp. O cliente vê foto, preço e opções no celular e escolhe sem precisar perguntar. No plano pago, a loja também recebe pedidos online e controla o caixa do balcão.</p>
+              <a class="domain" href="https://catalogosuper.com.br">catalogosuper.com.br<svg class="ext" aria-hidden="true" focusable="false" viewBox="0 0 16 16"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+            </div>
+            <figure class="project-fig">
+              <div class="shot">
+                <img src="/assets/img/catalogo-super-desktop.webp" srcset="/assets/img/catalogo-super-desktop-720.webp 720w, /assets/img/catalogo-super-desktop.webp 1280w" sizes="(max-width: 800px) 100vw, (max-width: 1000px) 54vw, 600px" width="1280" height="800" loading="lazy" decoding="async" alt="Página inicial do Catálogo Super, com o título “Pare de mandar foto por foto no WhatsApp. Mande um link.” e um catálogo de exemplo aberto no celular.">
+              </div>
+              <figcaption class="caption">Página inicial do Catálogo Super, outubro de 2026.</figcaption>
+            </figure>
+          </article>
+
+          <article class="project project-flip" aria-labelledby="p-guincho">
+            <div class="project-text">
+              <h3 id="p-guincho">Guincho Na Hora</h3>
+              <p class="status">Projeto para cliente · em evolução</p>
+              <p class="desc">Site da Guincho Na Hora, empresa de guincho, movimentação de cargas e locação de empilhadeiras de Caçapava, no Vale do Paraíba. O cliente escolhe o serviço, vê quais informações enviar e pede orçamento pelo formulário ou pelo WhatsApp, com a mensagem já começada.</p>
+              <a class="domain" href="https://guinchonahorasjc.com.br">guinchonahorasjc.com.br<svg class="ext" aria-hidden="true" focusable="false" viewBox="0 0 16 16"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+            </div>
+            <figure class="project-fig">
+              <div class="shot">
+                <img src="/assets/img/guincho-na-hora-desktop.webp" srcset="/assets/img/guincho-na-hora-desktop-720.webp 720w, /assets/img/guincho-na-hora-desktop.webp 1280w" sizes="(max-width: 800px) 100vw, (max-width: 1000px) 54vw, 600px" width="1280" height="800" loading="lazy" decoding="async" alt="Página inicial do site da Guincho Na Hora, com foto dos caminhões da empresa.">
+              </div>
+              <figcaption class="caption">Página inicial do site da Guincho Na Hora, outubro de 2026.</figcaption>
+            </figure>
+          </article>
+
+          <article class="also" aria-labelledby="p-cidade">
+            <div class="also-name">
+              <h3 id="p-cidade">CidadeGuess</h3>
+              <p class="status">Experimento · jogo diário</p>
+            </div>
+            <div class="also-text">
+              <p class="desc">Um jogo diário e gratuito: adivinhar qual cidade brasileira tem mais habitantes, com dados do Censo 2022 do IBGE e ranking do dia.</p>
+              <a class="domain" href="https://cidade-guess.vercel.app">cidade-guess.vercel.app<svg class="ext" aria-hidden="true" focusable="false" viewBox="0 0 16 16"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></a>
+            </div>
+          </article>
+
+          <p class="more">Tem um problema parecido? <a href="#contato">Fale comigo</a>.</p>
         </div>
+      </section>
 
-        <div class="work-list">
-          <article class="work-item featured">
-            <div class="work-number">01</div>
+      <section class="sec" id="servicos" aria-labelledby="t-servicos">
+        <header class="sec-head">
+          <h2 id="t-servicos">Serviços</h2>
+          <p class="sec-desc">Começo pelo menor sistema que resolve o problema e construo de um jeito que dê para manter depois.</p>
+        </header>
+        <h3 class="sub">O que eu faço</h3>
+        <ul class="cols" role="list">
+          <li>
+            <h4>Sites e sistemas sob medida</h4>
+            <p>Sites para apresentar o negócio e receber pedidos de orçamento, e painéis e ferramentas internas para organizar a parte do trabalho que hoje está espalhada em planilhas e mensagens.</p>
+          </li>
+          <li>
+            <h4>Automações e integrações</h4>
+            <p>Conecto formulários, APIs, bancos de dados, mensagens e relatórios para a informação passar de um sistema para outro sem ninguém copiar e colar. Cada regra fica escrita, e dá para conferir o que foi executado.</p>
+          </li>
+          <li>
+            <h4>Produtos próprios</h4>
+            <p>Softwares por assinatura (micro-SaaS) que resolvem um problema específico de pequenos negócios. Eu desenvolvo, mantenho e dou suporte. O Catálogo Super é o principal deles.</p>
+          </li>
+        </ul>
+        <div class="process">
+          <h3 class="sub" id="processo">Como um projeto anda</h3>
+          <ol class="steps" role="list">
+            <li>
+              <h4>Entender como é hoje</h4>
+              <p>Antes de escrever código, quero ver como o trabalho acontece hoje e em que ponto ele trava.</p>
+            </li>
+            <li>
+              <h4>Colocar o essencial no ar</h4>
+              <p>Faço a menor versão que já resolve o problema e publico cedo, para você usar com dados reais.</p>
+            </li>
+            <li>
+              <h4>Ajustar com o uso</h4>
+              <p>Com o sistema em uso, corrijo o que atrapalha e só acrescento o que fizer falta de verdade.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="sec contact" id="contato" aria-labelledby="t-contato">
+        <div class="contact-card">
+          <h2 id="t-contato">Contato</h2>
+          <p class="sec-desc">Quem responde sou eu, a mesma pessoa que vai construir.</p>
+          <p class="say">Me conte o que você quer resolver.</p>
+          <a class="mail" href="mailto:contato@janiceto.com.br?subject=Projeto%20pelo%20site">contato@janiceto.com.br</a>
+          <div class="contact-actions">
+            <a class="btn" href="mailto:contato@janiceto.com.br?subject=Projeto%20pelo%20site&amp;body=Ol%C3%A1%2C%20Jean.%0D%0A%0D%0AMeu%20neg%C3%B3cio%20(o%20que%20faz%20e%20em%20que%20cidade)%3A%0D%0A%0D%0AO%20que%20d%C3%A1%20trabalho%20hoje%3A%0D%0A%0D%0AComo%20isso%20%C3%A9%20feito%20hoje%20(planilha%2C%20WhatsApp%2C%20sistema%2C%20papel)%3A%0D%0A%0D%0AQuem%20vai%20usar%20no%20dia%20a%20dia%3A%0D%0A%0D%0APrazo%20ou%20data%20importante%20(se%20houver)%3A%0D%0A">Escrever um e-mail</a>
+            <button class="btn btn-ghost" type="button" id="copiar" data-copy="contato@janiceto.com.br" hidden>Copiar endereço</button>
+          </div>
+          <p class="copy-status" id="copiar-status" role="status" aria-live="polite"></p>
+        </div>
+        <div class="contact-help">
+          <h3 class="include-title">O que ajuda a incluir</h3>
+          <ul class="checklist" role="list">
+            <li>O que o seu negócio faz e em que cidade.</li>
+            <li>Qual tarefa hoje dá trabalho, atrasa ou depende de planilha e WhatsApp.</li>
+            <li>Como isso é feito hoje e quem vai usar no dia a dia.</li>
+            <li>Se existe prazo ou data importante.</li>
+          </ul>
+          <p class="hint">Não precisa saber o nome técnico de nada. Contar como funciona hoje já basta.</p>
+          <dl class="routes">
             <div>
-              <p class="work-label">produto próprio / em operação</p>
-              <h3>Catálogo Super</h3>
-              <p>Cardápio digital, pedidos, operação e gestão em uma experiência pensada para pequenos negócios de alimentação.</p>
-              <a class="work-link" href="https://catalogosuper.com.br" target="_blank" rel="noopener noreferrer">Visitar produto <span aria-hidden="true">↗</span></a>
+              <dt>Já usa o Catálogo Super?</dt>
+              <dd>O suporte do produto é pelo <a href="mailto:suporte@catalogosuper.com.br">suporte@catalogosuper.com.br</a>.</dd>
             </div>
-            <div class="work-meta" aria-label="Categorias do Catálogo Super">
-              <span>microSaaS</span>
-              <span>cardápio</span>
-              <span>pedidos</span>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <div class="work-number">02</div>
             <div>
-              <p class="work-label">projeto em evolução</p>
-              <h3>Guincho na Hora</h3>
-              <p>Site e sistema digital para organizar o primeiro contato e a operação de serviços de guincho, empilhadeiras e movimentação de cargas.</p>
-              <a class="work-link" href="https://guinchonahorasjc.com.br" target="_blank" rel="noopener noreferrer">Ver projeto <span aria-hidden="true">↗</span></a>
+              <dt>Código aberto</dt>
+              <dd><a href="https://github.com/jeancsla">github.com/jeancsla</a></dd>
             </div>
-            <div class="work-meta" aria-label="Categorias do Guincho na Hora">
-              <span>serviço</span>
-              <span>atendimento</span>
-              <span>web</span>
-            </div>
-          </article>
-
-          <article class="work-item">
-            <div class="work-number">03</div>
-            <div>
-              <p class="work-label">experimento público</p>
-              <h3>Cidade Guess</h3>
-              <p>Experimento web de jogo e descoberta, criado para testar uma experiência digital leve, pública e fácil de começar.</p>
-              <a class="work-link" href="https://cidade-guess.vercel.app" target="_blank" rel="noopener noreferrer">Abrir experimento <span aria-hidden="true">↗</span></a>
-            </div>
-            <div class="work-meta" aria-label="Categorias do Cidade Guess">
-              <span>Next.js</span>
-              <span>jogo web</span>
-              <span>experimento</span>
-            </div>
-          </article>
-        </div>
-        <p class="work-note">Alguns projetos têm partes privadas, dados de clientes ou estão em evolução. A vitrine mostra o produto e o método sem expor informações que não são públicas.</p>
-      </div>
-    </section>
-
-    <section class="section services-section" id="servicos">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-label">03 / o que faço</p>
-          <h2>Construir pequeno também é uma decisão técnica.</h2>
-          <p class="section-intro">A tecnologia entra para reduzir atrito, não para criar mais uma camada difícil de manter.</p>
-        </div>
-
-        <div class="service-grid">
-          <article class="service">
-            <span class="service-number">01</span>
-            <h3>Microsaas próprio</h3>
-            <p>Produtos pequenos e focados, com uma proposta clara, fluxo de uso direto e evolução guiada por problemas concretos.</p>
-          </article>
-          <article class="service">
-            <span class="service-number">02</span>
-            <h3>Sistemas sob medida</h3>
-            <p>Portais, painéis e ferramentas internas para organizar uma etapa específica da rotina sem depender de planilhas paralelas.</p>
-          </article>
-          <article class="service">
-            <span class="service-number">03</span>
-            <h3>Automação e integração</h3>
-            <p>Conexão entre formulários, APIs, bancos de dados, mensagens e relatórios com regras explícitas e rastreáveis.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="process-section" id="processo">
-      <div class="container process-grid">
-        <div>
-          <p class="section-label">04 / processo</p>
-          <h2>Do atrito real ao produto que cabe na rotina.</h2>
-          <p class="section-intro">Uma primeira versão útil, escopo claro e evolução guiada pelo uso — não pelo excesso de funcionalidades.</p>
-        </div>
-        <div class="process-list">
-          <div class="process-step">
-            <span>01</span>
-            <div><h3>Entender o atrito</h3><p>Mapear o que entra, quem decide, onde trava e qual informação precisa aparecer no momento certo.</p></div>
-          </div>
-          <div class="process-step">
-            <span>02</span>
-            <div><h3>Construir o essencial</h3><p>Colocar no ar uma versão pequena o bastante para ser compreendida e útil o bastante para ser testada.</p></div>
-          </div>
-          <div class="process-step">
-            <span>03</span>
-            <div><h3>Melhorar com uso</h3><p>Usar feedback, registros e ajustes contínuos para o produto continuar cabendo no dia a dia.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section identity-section" id="empresa">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-label">05 / empresa</p>
-          <h2>Uma marca pública, uma empresa identificada.</h2>
-          <p class="section-intro">Jean Aniceto é a marca profissional usada para apresentar este trabalho. A operação responsável está identificada abaixo para facilitar a verificação comercial.</p>
-        </div>
-
-        <div class="identity-grid">
-          <div class="identity-copy">
-            <p>Eu crio e mantenho produtos digitais, serviços de informática, automações e ferramentas que ajudam negócios a trabalhar com mais clareza.</p>
-            <p>Esta página é uma vitrine pública do trabalho. Ela não exige senha, não tem login, checkout ou formulário de contato. Para falar sobre um projeto ou pedir suporte, use <a class="public-email" href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>.</p>
-            <p class="identity-note">Produtos pagos terão uma página de oferta própria com descrição, preço, forma de entrega, suporte e condições antes de qualquer cobrança.</p>
-          </div>
-          <dl class="identity-facts">
-            <div class="identity-fact"><dt>Nome empresarial</dt><dd>51.046.020 JEAN CARLOS SANTOS LIMA ANICETO</dd></div>
-            <div class="identity-fact"><dt>CNPJ</dt><dd>51.046.020/0001-34</dd></div>
-            <div class="identity-fact"><dt>Situação</dt><dd>Ativa, conforme comprovante cadastral consultado em 01/08/2026</dd></div>
-            <div class="identity-fact"><dt>Município</dt><dd>São José dos Campos - SP</dd></div>
-            <div class="identity-fact"><dt>Atividades</dt><dd>Informática, treinamento e apoio administrativo, conforme cadastro empresarial</dd></div>
           </dl>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section policy-section" id="politicas">
-      <div class="container">
-        <div class="section-head">
-          <p class="section-label">06 / políticas</p>
-          <h2>Informação clara antes de qualquer contratação.</h2>
-          <p class="section-intro">As regras abaixo refletem o estado atual desta vitrine. As condições específicas de uma futura oferta paga aparecerão na própria oferta e no checkout correspondente.</p>
+      <section class="sec doc" id="empresa" aria-labelledby="t-empresa">
+        <header class="sec-head">
+          <h2 id="t-empresa">Empresa</h2>
+          <p class="sec-desc">Dados públicos da empresa responsável por este site e pelos produtos.</p>
+        </header>
+        <div class="company">
+          <div class="company-aside">
+            <p class="intro">Jean Aniceto é o nome com que apresento meu trabalho. Os serviços e os produtos deste site são da minha empresa, registrada como MEI em São José dos Campos/SP.</p>
+            <p class="note" id="cobranca"><strong>Encontrou este nome ou CNPJ numa cobrança?</strong> Ela é de um produto desta empresa, como o plano Pro do Catálogo Super. Escreva para <a href="mailto:suporte@catalogosuper.com.br">suporte@catalogosuper.com.br</a> com a data e o valor, e eu verifico com você.</p>
+          </div>
+          <dl class="registry">
+            <div><dt>Nome empresarial</dt><dd class="legal-name">51.046.020 JEAN CARLOS SANTOS LIMA ANICETO</dd></div>
+            <div class="row-key"><dt>CNPJ</dt><dd class="num key">51.046.020/0001-34</dd></div>
+            <div><dt>Natureza jurídica</dt><dd>Empresário individual, optante pelo MEI</dd></div>
+            <div><dt>Situação cadastral</dt><dd>Ativa, conferida em <span class="num">22/10/2026</span></dd></div>
+            <div><dt>Início das atividades</dt><dd class="num">14/06/2023</dd></div>
+            <div>
+              <dt>Atividades registradas (CNAE)</dt>
+              <dd>
+                <ul class="cnae" role="list">
+                  <li><span class="num">95.11-8-00</span> Reparação e manutenção de computadores e de equipamentos periféricos (principal)</li>
+                  <li><span class="num">85.99-6-03</span> Treinamento em informática</li>
+                  <li><span class="num">82.19-9-99</span> Preparação de documentos e serviços especializados de apoio administrativo não especificados anteriormente</li>
+                </ul>
+              </dd>
+            </div>
+            <div><dt>Sede</dt><dd>São José dos Campos/SP</dd></div>
+            <div><dt>Contato</dt><dd><a href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a></dd></div>
+          </dl>
         </div>
+      </section>
 
-        <div class="policy-grid">
-          <details class="policy" open>
-            <summary>Suporte e atendimento</summary>
-            <p>O canal público para falar sobre projetos e suporte é <a class="public-email" href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>. Quando um produto tiver cobrança ativa, a oferta informará também os prazos e as condições de atendimento antes do pagamento.</p>
-          </details>
-          <details class="policy" open>
-            <summary>Reembolso e disputas</summary>
-            <p>Esta home não realiza cobranças. Em um produto pago, a política de reembolso, a forma de solicitar análise e o canal para contestação serão informados antes do pagamento e na confirmação da compra.</p>
-          </details>
-          <details class="policy" open>
-            <summary>Cancelamento</summary>
-            <p>Não há assinatura ou plano ativo nesta página. Quando houver cobrança recorrente, o cancelamento será feito pelo canal indicado na oferta, com as condições apresentadas antes da contratação.</p>
-          </details>
-          <details class="policy" open>
-            <summary>Privacidade</summary>
-            <p>Esta vitrine não tem formulário, login, checkout, cookies de publicidade ou ferramenta de analytics. Links externos seguem as políticas dos respectivos sites.</p>
-          </details>
+      <section class="sec doc" id="politicas" aria-labelledby="t-politicas">
+        <header class="sec-head">
+          <h2 id="t-politicas">Políticas</h2>
+          <p class="sec-desc">Suporte, reembolso, cancelamento e privacidade.</p>
+        </header>
+        <p class="intro policies-intro">Este site só apresenta meu trabalho e não faz vendas. Cada produto ou serviço pago mostra, antes de qualquer cobrança, a descrição, o preço, a forma de entrega, o suporte e as condições de reembolso e cancelamento.</p>
+        <div class="policies">
+          <article class="policy" id="suporte" aria-labelledby="t-suporte">
+            <h3 id="t-suporte">Suporte e atendimento</h3>
+            <p>Para projetos, propostas e assuntos da empresa: <a href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>. Para suporte de um produto, use o canal indicado nele. No Catálogo Super, é <a href="mailto:suporte@catalogosuper.com.br">suporte@catalogosuper.com.br</a>.</p>
+          </article>
+          <article class="policy" id="cancelamento" aria-labelledby="t-cancelamento">
+            <h3 id="t-cancelamento">Cancelamento</h3>
+            <p>Assinaturas são canceladas pelo canal indicado em cada produto, nas condições mostradas antes da contratação. No Catálogo Super, você cancela quando quiser no próprio painel, em Plano e assinatura, e nenhuma cobrança nova é feita.</p>
+          </article>
+          <article class="policy" id="reembolso" aria-labelledby="t-reembolso">
+            <h3 id="t-reembolso">Reembolso e contestações</h3>
+            <p>Cada produto pago informa a política de reembolso antes do pagamento. No Catálogo Super, ela está nos <a href="https://catalogosuper.com.br/termos">Termos de Uso</a>: quando se aplica o direito de arrependimento (Código de Defesa do Consumidor, art. 49), você pode desistir em até 7 dias corridos da contratação e receber o valor integral, e cobranças em duplicidade ou por engano são devolvidas.</p>
+            <p>Para pedir reembolso ou contestar uma cobrança, escreva para o suporte do produto ou para <a href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>, informando o e-mail usado na compra, a data e o valor.</p>
+          </article>
+          <article class="policy" id="privacidade" aria-labelledby="t-privacidade">
+            <h3 id="t-privacidade">Privacidade</h3>
+            <p>Este site não tem formulário, login nem checkout, não grava cookies e não usa analytics, publicidade ou rastreadores. Ele também não carrega fontes, scripts ou imagens de outros sites.</p>
+            <p>Como em qualquer site, a hospedagem (Vercel Inc., empresa dos Estados Unidos) registra dados técnicos de cada acesso, como endereço IP, navegador, página e horário, para entregar a página e protegê-la contra abusos. Esses registros ficam com a Vercel por tempo limitado.</p>
+            <p>Se você me escrever, uso seu e-mail e sua mensagem só para responder e guardo apenas enquanto for preciso para o atendimento. Para pedir acesso, correção ou exclusão desses dados, escreva para <a href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>. Cada produto tem a própria política de privacidade (a do Catálogo Super está em <a href="https://catalogosuper.com.br/privacidade">catalogosuper.com.br/privacidade</a>), e links externos seguem as regras do site de destino.</p>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="next-section" id="acompanhar">
-      <div class="container next-grid">
-        <div>
-          <p class="section-label">07 / próximos passos</p>
-          <h2>Acompanhe o que está sendo construído.</h2>
-          <p>Os projetos públicos e o código aberto ficam reunidos no GitHub. Para falar sobre um projeto ou pedir suporte, escreva para <a class="public-email" href="mailto:contato@janiceto.com.br">contato@janiceto.com.br</a>.</p>
-        </div>
-        <a class="next-link" href="https://github.com/jeancsla" target="_blank" rel="noopener noreferrer">
-          <span>GitHub / jeancsla</span>
-          <strong aria-hidden="true">↗</strong>
-        </a>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer>
-    <div class="container footer-main">
-      <div><strong>Jean Aniceto</strong><br>Produtos digitais e microsaas.</div>
-      <div class="footer-legal"><strong>Empresa responsável:</strong> 51.046.020 JEAN CARLOS SANTOS LIMA ANICETO<br><strong>CNPJ:</strong> 51.046.020/0001-34 · São José dos Campos - SP</div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© <span id="year"></span> Jean Aniceto</span>
-      <span>Site público, sem senha e sem checkout ativo · <a href="#politicas">políticas</a></span>
+  <footer class="wrap">
+    <div class="foot">
+      <div class="foot-id">
+        <p class="foot-name"><img class="foot-mark" src="/favicon.svg" width="24" height="24" alt="">Jean Aniceto · software para pequenos negócios</p>
+        <p class="foot-copy">© <span id="year">2026</span> Jean Aniceto</p>
+      </div>
+      <p class="foot-legal">51.046.020 JEAN CARLOS SANTOS LIMA ANICETO · CNPJ <span class="num">51.046.020/0001-34</span> · São José dos Campos/SP</p>
+      <nav class="foot-links" aria-label="Rodapé">
+        <a href="#projetos">Projetos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#suporte">Suporte</a>
+        <a href="#reembolso">Reembolso</a>
+        <a href="#cancelamento">Cancelamento</a>
+        <a href="#privacidade">Privacidade</a>
+        <a href="https://github.com/jeancsla">GitHub</a>
+      </nav>
     </div>
   </footer>
-
-  <script>
-    (() => {
-      const year = document.getElementById("year");
-      if (year) year.textContent = String(new Date().getFullYear());
-    })();
-  </script>
 </body>
 </html>

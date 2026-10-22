@@ -1,0 +1,6 @@
+# Arquivos do repositório que não devem virar URL pública
+tools/
+README.md
+LICENSE
+.gitignore
+.icons-*/

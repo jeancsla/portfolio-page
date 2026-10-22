@@ -1,0 +1,4 @@
+Contact: mailto:contato@janiceto.com.br
+Expires: 2027-10-22T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://janiceto.com.br/.well-known/security.txt
