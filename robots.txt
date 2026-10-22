@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://janiceto.com.br/sitemap.xml
